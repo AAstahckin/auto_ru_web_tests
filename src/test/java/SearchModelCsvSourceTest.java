@@ -13,7 +13,7 @@ public class SearchModelCsvSourceTest extends TestBase {
     AutoRuPage autoRuPage = new AutoRuPage();
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
-    @CsvSource({"BMW, 1 серии","Audi, 80"})
+    @CsvSource({ "BMW, 1 серии","Audi, 80" })
     @ParameterizedTest(name = "Для бренда \"{0}\" найдена \"{1}\" в списке моделей")
     @DisplayName("Тест для поиска модели по марки автомобиля")
     @Tags({@Tag("CRITICAL"), @Tag("SEARCH"), @Tag("WEB")})
