@@ -1,5 +1,7 @@
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import pages.AutoRuPage;
@@ -8,7 +10,8 @@ import pages.components.MarketingPopupComponents;
 
 import static com.codeborne.selenide.Selenide.open;
 import static utils.RandomUtils.*;
-
+@DisplayName("Тест заполнения формы вручную")
+@Tag("regression")
 public class SaleAnnouncement extends TestBase {
 
     @BeforeEach
@@ -20,7 +23,7 @@ public class SaleAnnouncement extends TestBase {
     PostCarPage postCarPage = new PostCarPage();
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
-    @CsvFileSource(resources = "/brandAndModelTestData.csv")
+    @CsvFileSource(resources = "/testDataAutomobile.csv")
     @ParameterizedTest(name = "Заполнение объявления для марки {0}, модель {1}")
     void searchMarksAndBrand2(String brand,
                               String model,
@@ -33,13 +36,19 @@ public class SaleAnnouncement extends TestBase {
                               String ptsType,
                               String owners,
                               String yearSale,
-                              String mouthSale) {
-        String
-                mileage = getRandomNumber(7),
-                userName = getRandomFirstName(),
-                email = getRandomEmail(),
-                phone = getRandomNumber(10);
+                              String mouthSale,
+                              String guaranteeYear,
+                              String guaranteeMouth) {
 
+        String mileage = getRandomNumber(7);
+        String userName = getRandomFirstName();
+        String email = getRandomEmail();
+        String phone = getRandomNumber(10);
+        String descriptionParam = getRandomDescriptionParams();
+        String damageType = getRandomDamageTypeParams();
+        String damageValue = getRandomDamageValues();
+        String options = getRandomOptionsParams();
+        String descriptionText = getRandomText(100);
 
         open("/");
         marketingPopupComponents.shutdownMarketingPopup();
@@ -52,14 +61,13 @@ public class SaleAnnouncement extends TestBase {
                 .setPtsDocumentType(ptsType, owners)
                 .setPtsYearPurchaseCar(yearSale,mouthSale)
                 .setPtsNotCleared()
-                .setPtsGuarantee()
-                .setDescription()
-                .setOptions()
-                .setDamage()
-                .checkContacts(userName, email, phone)
+                .setPtsGuarantee(guaranteeYear, guaranteeMouth)
+                .setDescription(descriptionText,descriptionParam)
+                .setOptions(options)
+                .setDamage(damageType, damageValue)
+                .setContacts(userName, email, phone)
                 .clickResetButton()
                 .closeRedButton();
     }
-
 
 }

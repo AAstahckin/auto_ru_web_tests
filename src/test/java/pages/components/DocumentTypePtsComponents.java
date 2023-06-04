@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static data.enums.PtsFields.PTS_OWNERS;
 import static data.enums.PtsOwnersParams.*;
-import static data.enums.PtsOwnersParams.FOURTH_OR_MORE_OWNER;
 import static data.enums.PtsTypeParams.NO_PTS;
 
 public class DocumentTypePtsComponents {

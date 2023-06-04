@@ -1,24 +1,36 @@
 package utils;
 
 import com.github.javafaker.Faker;
-import data.enums.EngineType;
-import data.enums.PtsOwnersParams;
+import data.enums.DamageType;
+import data.enums.DamageValues;
+import data.enums.DescriptionParams;
+import data.enums.OptionsParams;
+
+import java.util.Random;
 
 public class RandomUtils {
 
     static Faker faker = new Faker();
 
     public static <T extends Enum<?>> T getRandomEnum(Class<T> enumClass) {
-        int index = faker.random().nextInt(0,enumClass.getEnumConstants().length - 1);
+        int index = faker.random().nextInt(0, enumClass.getEnumConstants().length - 1);
         return enumClass.getEnumConstants()[index];
     }
 
-    public static String getRandomEngineType() {
-        return getRandomEnum(EngineType.class).getTypeEngine();
+    public static String getRandomOptionsParams() {
+        return getRandomEnum(OptionsParams.class).getOptionsValue();
     }
 
-    public static String getRandomDriveType() {
-        return getRandomEnum(PtsOwnersParams.class).getValue();
+    public static String getRandomDescriptionParams() {
+        return getRandomEnum(DescriptionParams.class).getDescriptionValue();
+    }
+
+    public static String getRandomDamageTypeParams() {
+        return getRandomEnum(DamageType.class).getOptionsTypeValue();
+    }
+
+    public static String getRandomDamageValues() {
+        return getRandomEnum(DamageValues.class).getDamageValues();
     }
 
     public static String getRandomEmail() {
@@ -32,4 +44,16 @@ public class RandomUtils {
     public static String getRandomFirstName() {
         return faker.name().firstName();
     }
+
+    public static String getRandomText(int length) {
+        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!)(*&^%$#%@![]{}||//><";
+        Random random=new Random();
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<length;i++){
+            int number=random.nextInt(62);
+            sb.append(str.charAt(number));
+        }
+        return sb.toString();
+    }
+
 }

@@ -8,7 +8,9 @@ import pages.components.MarketingPopupComponents;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class SearchBrandAndModelSource extends TestBase {
+@Tags({@Tag("regression"), @Tag("smoke")})
+@DisplayName("Проверка поиска автомобиля по бренду и модели")
+public class SearchBrandAndModel extends TestBase {
 
     AutoRuPage autoRuPage = new AutoRuPage();
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
@@ -17,10 +19,7 @@ public class SearchBrandAndModelSource extends TestBase {
             "Toyota Highlander", "Toyota Avensis", "Kia Magentis", "Mitsubishi Lancer",
             "BMW X5", "Mercedes-Benz GL-Класс", "LADA (ВАЗ) 2121 (4x4)"
     })
-    @ParameterizedTest(name = "При поиске автомобиля по тексту : \"{0}\" в списке автомобилей отображается : \"{0}\"")
-    @DisplayName("Проверка поиска автомобиля по бренду и модели")
-    @Tags({@Tag("BLOCKER"), @Tag("SEARCH"), @Tag("WEB")})
-
+    @ParameterizedTest(name = "Проверка поиска автомобиля {0} в поиске")
     void searchMarksAndBrand(String searchQuery) {
         open("https://auto.ru/");
         marketingPopupComponents.shutdownMarketingPopup();
