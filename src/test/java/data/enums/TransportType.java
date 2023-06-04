@@ -1,4 +1,4 @@
-package data;
+package data.enums;
 
 public enum TransportType {
 
