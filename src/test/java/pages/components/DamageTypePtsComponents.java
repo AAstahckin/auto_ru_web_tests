@@ -12,7 +12,8 @@ import static com.codeborne.selenide.Selenide.$;
 public class DamageTypePtsComponents {
     String elementDamage = ".DamageDot_index_%s";
 
-    SelenideElement damagePopup = $(".DamagePopup"),
+    SelenideElement
+            damagePopup = $(".DamagePopup"),
             damagesScheme = $(".VehicleBodyDamagesSchemeFrame__scheme div");
 
     @Step("Заполняем повреждения автомобиля")

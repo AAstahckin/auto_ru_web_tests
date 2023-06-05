@@ -6,8 +6,6 @@ import data.enums.DamageValues;
 import data.enums.DescriptionParams;
 import data.enums.OptionsParams;
 
-import java.util.Random;
-
 public class RandomUtils {
 
     static Faker faker = new Faker();
@@ -46,14 +44,12 @@ public class RandomUtils {
     }
 
     public static String getRandomText(int length) {
-        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!)(*&^%$#%@![]{}||//><";
-        Random random=new Random();
-        StringBuilder sb=new StringBuilder();
-        for(int i=0;i<length;i++){
-            int number=random.nextInt(62);
-            sb.append(str.charAt(number));
+        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i=0; i<length; i++){
+            stringBuilder.append(str.charAt(faker.random().nextInt(str.length())));
         }
-        return sb.toString();
+        return stringBuilder.toString();
     }
 
 }
