@@ -12,6 +12,7 @@ import pages.components.MarketingPopupComponents;
 
 import static com.codeborne.selenide.Selenide.open;
 import static utils.RandomUtils.*;
+
 @DisplayName("Тест автоматического заполнения формы по VIN коду")
 @Tag("regression")
 @Description("Тест автоматического заполнения формы по VIN коду")
@@ -54,8 +55,6 @@ public class SearchVinCode extends TestBase {
                         transmission,
                         modification)
                 .clickResetButton();
-
-    }
-
+   }
 
 }
