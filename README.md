@@ -47,7 +47,7 @@ gradle clean regression_test -Dbrowser="chrome:100.0" -Dbrowser_size="1920x1080"
 ### Параметры сборки
 * <code>BROWSER</code> – браузер и его версия. По-умолчанию - <code>chrome:100.0</code>.
 * <code>BROWSER_SIZE</code> – размер окна браузера. По-умолчанию - <code>1920x1080</code>.
-* <code>BASE_URL</code> – url, по которому будет открываться тестируемое приложение. По-умолчанию - <code>https://auto.ru</code>.
+* <code>BASE_URL</code> – url, по которому будет открываться тестируемое приложение. По-умолчанию - <code>https://auto.ru/</code>.
 * <code>SELENOID_URL</code> – адрес удалённого браузера.
 
 <p align="center">
