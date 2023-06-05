@@ -55,8 +55,6 @@ public class SearchVinCode extends TestBase {
                         transmission,
                         modification)
                 .clickResetButton();
-
-    }
-
+   }
 
 }
