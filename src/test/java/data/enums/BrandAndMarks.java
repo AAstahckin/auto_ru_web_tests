@@ -8,7 +8,7 @@ public enum BrandAndMarks {
             "6 серии", "600", "7 серии", "8 серии", "i3", "i4", "i7", "i8", "iX",
             "iX1", "iX3", "M2", "M3", "M4", "M5", "M6", "M8", "X1", "X2", "X3", "X3 M",
             "X4", "X4 M", "X5", "X5 M", "X6", "X6 M", "X7", "XM", "Z1", "Z3", "Z3 M", "Z4", "Z4 M", "02 (E10)",
-            "2000 C/CS", "3/15", "315", "3200", "327", "501", "507", "700", "E3", "E9", "i5", "M1", "New Class", "Z8",}),
+            "2000 C/CS", "3/15", "315", "3200", "327", "501", "507", "700", "E3", "E9", "i5", "M1", "New Class", "Z8"}),
     MAZDA("Mazda", new String[]{
             "121", "2", "3", "3 MPS", "323", "5", "6", "6 MPS", "626", "929", "Atenza", "Autozam AZ-3", "Axela", "AZ-1",
             "AZ-Wagon", "B-series", "Biante", "Bongo", "Bongo Friendee", "BT-50", "Capella", "Carol", "Cosmo", "Cronos",
