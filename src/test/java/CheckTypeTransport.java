@@ -1,4 +1,5 @@
 import data.enums.TransportType;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -9,15 +10,16 @@ import pages.components.MarketingPopupComponents;
 import java.util.List;
 import static com.codeborne.selenide.Selenide.open;
 
+@DisplayName("Проверка отображения видов транспорта на главной странице")
+@Tags({@Tag("regression"), @Tag("smoke")})
+@Description("Проверка отображения видов транспорта на главной странице")
 public class CheckTypeTransport extends TestBase {
 
     AutoRuPage autoRuPage = new AutoRuPage();
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
-    @EnumSource(value = TransportType.class, names = {"COMMERCIAL", "MOTO", "CARS"})
+    @EnumSource(value = TransportType.class)
     @ParameterizedTest(name = "При наведенеии в Header на элемент : {0} отображаются виды транспорта")
-    @DisplayName("Тест для поиска модели по марки автомобиля")
-    @Tags({@Tag("regression"), @Tag("smoke")})
     void searchMarksAndBrand(TransportType transportType) {
         open("/");
         marketingPopupComponents.shutdownMarketingPopup();

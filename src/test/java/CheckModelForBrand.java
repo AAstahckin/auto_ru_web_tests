@@ -1,4 +1,5 @@
 import data.enums.BrandAndMarks;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -10,8 +11,9 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.open;
 
-@DisplayName("Тест для поиска модели по марки автомобиля")
+@DisplayName("Тест поиска моделей автомобиля по бренду")
 @Tags({@Tag("regression"), @Tag("smoke")})
+@Description("Тест поиска моделей автомобиля по бренду")
 public class CheckModelForBrand extends TestBase {
 
     AutoRuPage autoRuPage = new AutoRuPage();

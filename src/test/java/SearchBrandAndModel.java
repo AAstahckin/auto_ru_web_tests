@@ -1,3 +1,4 @@
+import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -10,6 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 @Tags({@Tag("regression"), @Tag("smoke")})
 @DisplayName("Проверка поиска автомобиля по бренду и модели")
+@Description("Проверка поиска автомобиля по бренду и модели")
 public class SearchBrandAndModel extends TestBase {
 
     AutoRuPage autoRuPage = new AutoRuPage();

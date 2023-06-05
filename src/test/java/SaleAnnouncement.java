@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Selenide;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -12,6 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static utils.RandomUtils.*;
 @DisplayName("Тест заполнения формы вручную")
 @Tag("regression")
+@Description("Тест заполнения формы вручную")
 public class SaleAnnouncement extends TestBase {
 
     @BeforeEach
