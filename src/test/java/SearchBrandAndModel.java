@@ -23,7 +23,7 @@ public class SearchBrandAndModel extends TestBase {
     })
     @ParameterizedTest(name = "Проверка поиска автомобиля {0} в поиске")
     void searchMarksAndBrand(String searchQuery) {
-        open("https://auto.ru/");
+        open("");
         marketingPopupComponents.shutdownMarketingPopup();
         autoRuPage.searchAuto(searchQuery);
     }

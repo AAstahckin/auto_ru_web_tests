@@ -21,7 +21,7 @@ public class CheckTypeTransport extends TestBase {
     @EnumSource(value = TransportType.class)
     @ParameterizedTest(name = "При наведенеии в Header на элемент : {0} отображаются виды транспорта")
     void searchMarksAndBrand(TransportType transportType) {
-        open("/");
+        open("");
         marketingPopupComponents.shutdownMarketingPopup();
         autoRuPage.checkTypeTransport(transportType.getTypeName(), List.of(transportType.getTypeValue()));
     }

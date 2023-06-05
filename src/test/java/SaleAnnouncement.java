@@ -52,7 +52,7 @@ public class SaleAnnouncement extends TestBase {
         String options = getRandomOptionsParams();
         String descriptionText = getRandomText(100);
 
-        open("/");
+        open("");
         marketingPopupComponents.shutdownMarketingPopup();
         autoRuPage.clickAddButton();
         postCarPage

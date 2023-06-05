@@ -15,7 +15,7 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = System.getProperty("base_url", "https://auto.ru");
+        Configuration.baseUrl = System.getProperty("base_url", "https://auto.ru/");
         String[] browser = System.getProperty("browser", "chrome:100.0").split(":");
         Configuration.browser = browser[0];
         Configuration.browserVersion = browser[1];

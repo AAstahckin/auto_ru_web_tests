@@ -39,7 +39,7 @@ public class SearchVinCode extends TestBase {
             String transmission,
             String modification) {
 
-        open("/");
+        open("");
         marketingPopupComponents.shutdownMarketingPopup();
         autoRuPage.clickAddButton();
         postCarPage

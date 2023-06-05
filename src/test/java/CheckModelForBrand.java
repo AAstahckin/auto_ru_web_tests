@@ -22,7 +22,7 @@ public class CheckModelForBrand extends TestBase {
     @EnumSource(value = BrandAndMarks.class)
     @ParameterizedTest(name = "Для бренда {0} в списке присутствуют модели авто")
     void searchMarksAndBrand(BrandAndMarks brandAndMarks) {
-        open("/");
+        open("");
         marketingPopupComponents.shutdownMarketingPopup();
         autoRuPage
                 .clickBrandAuto(brandAndMarks.getTypeName())
