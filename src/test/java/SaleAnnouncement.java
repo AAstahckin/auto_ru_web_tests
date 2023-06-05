@@ -11,6 +11,7 @@ import pages.components.MarketingPopupComponents;
 
 import static com.codeborne.selenide.Selenide.open;
 import static utils.RandomUtils.*;
+
 @DisplayName("Тест заполнения формы вручную")
 @Tag("regression")
 @Description("Тест заполнения формы вручную")
