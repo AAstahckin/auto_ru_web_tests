@@ -7,8 +7,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import pages.AutoRuPage;
 import pages.components.MarketingPopupComponents;
 
-import static com.codeborne.selenide.Selenide.open;
-
 @Tags({@Tag("regression"), @Tag("smoke")})
 @DisplayName("Проверка поиска автомобиля по бренду и модели")
 @Description("Проверка поиска автомобиля по бренду и модели")
@@ -23,7 +21,7 @@ public class SearchBrandAndModel extends TestBase {
     })
     @ParameterizedTest(name = "Проверка поиска автомобиля {0} в поиске")
     void searchMarksAndBrand(String searchQuery) {
-        open("");
+        autoRuPage.openAutoRu();
         marketingPopupComponents.shutdownMarketingPopup();
         autoRuPage.searchAuto(searchQuery);
     }

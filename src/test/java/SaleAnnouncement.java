@@ -8,8 +8,6 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import pages.AutoRuPage;
 import pages.PostCarPage;
 import pages.components.MarketingPopupComponents;
-
-import static com.codeborne.selenide.Selenide.open;
 import static utils.RandomUtils.*;
 
 @DisplayName("Тест заполнения формы вручную")
@@ -53,7 +51,7 @@ public class SaleAnnouncement extends TestBase {
         String options = getRandomOptionsParams();
         String descriptionText = getRandomText(100);
 
-        open("");
+        autoRuPage.openAutoRu();
         marketingPopupComponents.shutdownMarketingPopup();
         autoRuPage.clickAddButton();
         postCarPage

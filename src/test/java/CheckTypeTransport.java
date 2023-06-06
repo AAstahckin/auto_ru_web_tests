@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.EnumSource;
 import pages.AutoRuPage;
 import pages.components.MarketingPopupComponents;
 import java.util.List;
-import static com.codeborne.selenide.Selenide.open;
 
 @DisplayName("Проверка отображения видов транспорта на главной странице")
 @Tags({@Tag("regression"), @Tag("smoke")})
@@ -21,7 +20,7 @@ public class CheckTypeTransport extends TestBase {
     @EnumSource(value = TransportType.class)
     @ParameterizedTest(name = "При наведенеии в Header на элемент : {0} отображаются виды транспорта")
     void searchMarksAndBrand(TransportType transportType) {
-        open("");
+        autoRuPage.openAutoRu();
         marketingPopupComponents.shutdownMarketingPopup();
         autoRuPage.checkTypeTransport(transportType.getTypeName(), List.of(transportType.getTypeValue()));
     }

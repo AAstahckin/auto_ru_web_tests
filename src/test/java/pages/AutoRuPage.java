@@ -16,6 +16,7 @@ public class AutoRuPage {
 
     SelenideElement
             marksIndexSelector = $(".IndexSelector__marks"),
+            headerLogoLink = $(".Header__logoLink"),
             titleHead = $(".ListingHead__title"),
             regionIndicators = $(".TopNavigationIndicators__item"),
             selectedBrand = $(".MMMFilter__itemColumn .Button__text"),
@@ -30,6 +31,13 @@ public class AutoRuPage {
             listingCars = $$(".ListingCars_outputType_list div h3"),
             itemTransport = $$(".HeaderMainNav__subLinks li"),
             listModelsAuto = $$(".ListingPopularMMM__items div a");
+
+    @Step("Открываем auto.ru")
+    public AutoRuPage openAutoRu() {
+        open("");
+        headerLogoLink.shouldHave(text("Авто.ру"));
+        return this;
+    }
 
     @Step("Нажимаем на кнопку - Разместить бесплатно")
     public AutoRuPage clickAddButton() {

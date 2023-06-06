@@ -9,8 +9,6 @@ import pages.AutoRuPage;
 import pages.components.MarketingPopupComponents;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.open;
-
 @DisplayName("Тест поиска моделей автомобиля по бренду")
 @Tags({@Tag("regression"), @Tag("smoke")})
 @Description("Тест поиска моделей автомобиля по бренду")
@@ -22,7 +20,7 @@ public class CheckModelForBrand extends TestBase {
     @EnumSource(value = BrandAndMarks.class)
     @ParameterizedTest(name = "Для бренда {0} в списке присутствуют модели авто")
     void searchMarksAndBrand(BrandAndMarks brandAndMarks) {
-        open("");
+        autoRuPage.openAutoRu();
         marketingPopupComponents.shutdownMarketingPopup();
         autoRuPage
                 .clickBrandAuto(brandAndMarks.getTypeName())
