@@ -95,7 +95,7 @@ gradle clean regression_test -Dbrowser="chrome:100.0" -Dbrowser_size="1920x1080"
 * Видео прогона автотестов
 
 <p align="center">
-<img title="Allure TestOps DashBoard" src="media/screens/ResultTestOps.png">
+<img title="Allure TestOps DashBoard" src="media/screens/AllureTestCases.png">
 </p>
 
 ## <img width="4%" style="vertical-align:middle" title="Jira" src="media/logo/Jira.svg"> Интеграция с Jira
