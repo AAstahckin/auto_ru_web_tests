@@ -68,7 +68,7 @@ gradle clean regression_test -Dbrowser="chrome:100.0" -Dbrowser_size="1920x1080"
 * Видео прогона автотестов
 
 <p align="center">
-<img title="Test Results in Alure" src="media/screens/AllureResultTest.png">
+<img title="Test Results in Alure" src="media/screens/AllureSuites.png">
 </p>
 
 ## <img width="4%" style="vertical-align:middle" title="Allure TestOps" src="media/logo/AllureTestOps.svg"> Интеграция с Allure TestOps

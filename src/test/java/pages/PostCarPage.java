@@ -6,6 +6,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import pages.components.DamageTypePtsComponents;
 import pages.components.DocumentTypePtsComponents;
+import pages.components.MarketingPopupComponents;
 
 import java.io.File;
 
@@ -26,6 +27,7 @@ public class PostCarPage {
 
     DocumentTypePtsComponents documentTypePtsComponents = new DocumentTypePtsComponents();
     DamageTypePtsComponents damageTypePtsComponents = new DamageTypePtsComponents();
+    MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
     SelenideElement
             inputMarks = $(".TextInput__input .TextInput__box .TextInput__control"),
