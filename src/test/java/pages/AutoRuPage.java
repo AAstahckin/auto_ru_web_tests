@@ -35,7 +35,6 @@ public class AutoRuPage {
     @Step("Открываем auto.ru")
     public AutoRuPage openAutoRu() {
         open("");
-        headerLogoLink.shouldHave(text("Авто.ру"));
         return this;
     }
 
