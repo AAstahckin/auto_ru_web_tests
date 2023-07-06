@@ -2,7 +2,6 @@ import data.enums.BrandAndMarks;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import pages.AutoRuPage;
@@ -10,7 +9,7 @@ import pages.components.MarketingPopupComponents;
 import java.util.List;
 
 @DisplayName("Тест поиска моделей автомобиля по бренду")
-@Tags({@Tag("regression"), @Tag("smoke")})
+@Tag("smoke")
 @Description("Тест поиска моделей автомобиля по бренду")
 public class CheckModelForBrand extends TestBase {
 

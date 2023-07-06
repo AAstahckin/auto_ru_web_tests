@@ -6,7 +6,6 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import pages.components.DamageTypePtsComponents;
 import pages.components.DocumentTypePtsComponents;
-import pages.components.MarketingPopupComponents;
 
 import java.io.File;
 
@@ -27,7 +26,6 @@ public class PostCarPage {
 
     DocumentTypePtsComponents documentTypePtsComponents = new DocumentTypePtsComponents();
     DamageTypePtsComponents damageTypePtsComponents = new DamageTypePtsComponents();
-    MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
     SelenideElement
             inputMarks = $(".TextInput__input .TextInput__box .TextInput__control"),
@@ -46,7 +44,7 @@ public class PostCarPage {
             gearTypeSection = $(".AccordionSectionBody__content .GearTypeField"),
             transmissionSection = $(".AccordionSectionBody__content .TransmissionField"),
             techParamSection = $(".AccordionSectionBody__content .TechParamField"),
-            CheckedMenuSectionTech = $("[data-testid=menu-section-tech]").$(".OfferAccordionContents__listItemCheckedIcon"),
+            checkedMenuSectionTech = $("[data-testid=menu-section-tech]").$(".OfferAccordionContents__listItemCheckedIcon"),
             buttonBlue = $(".OfferWizardControls .Button_color_blue"),
             buttonGray = $(".OfferWizardControls .Button_color_gray"),
             buttonTransparentBlue = $(".OfferWizardControls .Button_color_transparentBlue"),
@@ -65,7 +63,7 @@ public class PostCarPage {
             yearRadioSelection = $(".Menu_mode_radio"),
             descriptionHeader = $(".OfferWizardStep_current .OfferAccordionSectionHeader__title"),
             descriptionFieldWarning = $(".OfferWizardStep_current .OfferFormDescriptionField__warning"),
-            autoruExclusiveField = $(".OfferWizardStep_current .OfferFormAutoruExclusiveField__legend"),
+            autoRuExclusiveField = $(".OfferWizardStep_current .OfferFormAutoruExclusiveField__legend"),
             conditionBeatenField = $(".OfferWizardStep_current .OfferFormConditionBeatenField__legend"),
             inputDescription = $(".TextArea__control"),
             eighthStep = $("#wizard-step-8"),
@@ -119,7 +117,7 @@ public class PostCarPage {
         techParamSection.$(byText(horses)).click();
         Allure.step("Выбираем цвет " + color);
         $(String.format(dataId, color)).click();
-        CheckedMenuSectionTech.shouldHave(visible);
+        checkedMenuSectionTech.shouldHave(visible);
         Allure.step("Нажимаем на кнопку продолжить");
         buttonBlue.should(visible, ofSeconds(5)).hover().click();
         return this;
@@ -210,7 +208,7 @@ public class PostCarPage {
         Allure.step("Проверяем отображение полей");
         descriptionHeader.shouldHave(text(DESCRIPTION_HEADER.getField()));
         descriptionFieldWarning.shouldHave(text(DESCRIPTION_WARNING.getField()));
-        autoruExclusiveField.shouldHave(text(DESCRIPTION_ONLY_ON_AUTO.getField()));
+        autoRuExclusiveField.shouldHave(text(DESCRIPTION_ONLY_ON_AUTO.getField()));
         conditionBeatenField.shouldHave(text(DESCRIPTION_BEATEN.getField()));
         buttonGray.should(editable, ofSeconds(5));
         inputDescription.click();

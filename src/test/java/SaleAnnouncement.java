@@ -2,7 +2,6 @@ import com.codeborne.selenide.Selenide;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import pages.AutoRuPage;
@@ -11,7 +10,6 @@ import pages.components.MarketingPopupComponents;
 import static utils.RandomUtils.*;
 
 @DisplayName("Тест заполнения формы вручную")
-@Tag("regression")
 @Description("Тест заполнения формы вручную")
 public class SaleAnnouncement extends TestBase {
 

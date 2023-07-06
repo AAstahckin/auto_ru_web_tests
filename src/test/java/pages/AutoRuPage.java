@@ -16,7 +16,6 @@ public class AutoRuPage {
 
     SelenideElement
             marksIndexSelector = $(".IndexSelector__marks"),
-            headerLogoLink = $(".Header__logoLink"),
             titleHead = $(".ListingHead__title"),
             regionIndicators = $(".TopNavigationIndicators__item"),
             selectedBrand = $(".MMMFilter__itemColumn .Button__text"),
@@ -24,7 +23,6 @@ public class AutoRuPage {
             searchInput = $(".TextInput__control"),
             searchOutputTitle = $(".SearchLineSuggestItem__title"),
             addButton = $(".HeaderUserMenu__addButton"),
-            allListModel = $(".ListingPopularMMM__expandLink"),
             mainHeader = $(".HeaderMainNav_theme_default");
 
     ElementsCollection
@@ -56,10 +54,6 @@ public class AutoRuPage {
         selectedBrand.shouldHave(text(brand));
         Allure.step("Проверяем что названии поиска присутствует: Купить - " + brand);
         titleHead.shouldHave(text("Купить " + brand));
-        Allure.step("Нажимаем на кнопку: Все модели");
-        allListModel.click();
-        Allure.step("Нажимаем на кнопку: Нет в продаже");
-        allListModel.click();
         Allure.step("Проверяем что в списке присутствуют автомобили");
         listModelsAuto.shouldHave(texts(model));
         return this;

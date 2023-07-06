@@ -1,13 +1,12 @@
 import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.AutoRuPage;
 import pages.components.MarketingPopupComponents;
 
-@Tags({@Tag("regression"), @Tag("smoke")})
+@Tag("smoke")
 @DisplayName("Проверка поиска автомобиля по бренду и модели")
 @Description("Проверка поиска автомобиля по бренду и модели")
 public class SearchBrandAndModel extends TestBase {
