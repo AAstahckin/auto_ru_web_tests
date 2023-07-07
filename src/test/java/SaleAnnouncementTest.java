@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Selenide;
-import jdk.jfr.Description;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,9 +10,10 @@ import pages.PostCarPage;
 import pages.components.MarketingPopupComponents;
 import static utils.RandomUtils.*;
 
-@DisplayName("Тест заполнения формы вручную")
-@Description("Тест заполнения формы вручную")
-public class SaleAnnouncement extends TestBase {
+@Story("Заполнение формы о продаже авто")
+@DisplayName("Ручное заполнение формы")
+@Owner("Aleksey_Astashkin")
+public class SaleAnnouncementTest extends TestBase {
 
     @BeforeEach
     void forTest() {
@@ -22,6 +24,7 @@ public class SaleAnnouncement extends TestBase {
     PostCarPage postCarPage = new PostCarPage();
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
+    @DisplayName("Ручное заполнение формы")
     @CsvFileSource(resources = "/testDataAutomobile.csv")
     @ParameterizedTest(name = "Заполнение объявления для марки {0}, модель {1}")
     void searchMarksAndBrand2(String brand,

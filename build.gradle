@@ -10,6 +10,7 @@ repositories {
 def selenideVersion = "6.13.0",
     allureVersion = "2.21.0",
     jUnitVersion = "5.9.3",
+    javaFakerVersion = "5.9.3",
     slf4jVersion = "2.0.7"
 
 allure {
@@ -30,7 +31,7 @@ dependencies {
     testImplementation(
             "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
-            "com.github.javafaker:javafaker:1.0.2",
+            "com.github.javafaker:javafaker:$javaFakerVersion",
             "org.junit.jupiter:junit-jupiter:$jUnitVersion",
             "org.slf4j:slf4j-simple:$slf4jVersion"
     )
@@ -58,14 +59,8 @@ test {
     useJUnitPlatform()
 }
 
-task regression_test(type: Test) {
-    useJUnitPlatform{
-        includeTags("regression")
-    }
-}
-
 task smoke_test(type: Test) {
-    useJUnitPlatform{
+    useJUnitPlatform {
         includeTags("smoke")
     }
 }

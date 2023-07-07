@@ -1,5 +1,5 @@
 import com.codeborne.selenide.Selenide;
-import jdk.jfr.Description;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,9 +8,10 @@ import pages.AutoRuPage;
 import pages.PostCarPage;
 import pages.components.MarketingPopupComponents;
 
-@DisplayName("Тест автоматического заполнения формы по VIN коду")
-@Description("Тест автоматического заполнения формы по VIN коду")
-public class SearchVinCode extends TestBase {
+@Story("Заполнение объявления по VIN")
+@DisplayName("Автоматическое заполнение формы")
+@Owner("Aleksey_Astashkin")
+public class SearchVinCodeTest extends TestBase {
 
     @BeforeEach
     void forTest() {
@@ -21,6 +22,8 @@ public class SearchVinCode extends TestBase {
     AutoRuPage autoRuPage = new AutoRuPage();
     PostCarPage postCarPage = new PostCarPage();
 
+    @DisplayName("Автоматическое заполнение формы")
+    @Severity(SeverityLevel.BLOCKER)
     @CsvFileSource(resources = "/testDataVinCodeAndTexParam.csv")
     @ParameterizedTest(name = "Заполнение объявления по VIN {0}, модель {1}")
     void searchMarksAndBrand2(

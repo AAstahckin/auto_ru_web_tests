@@ -1,5 +1,7 @@
 import data.enums.BrandAndMarks;
-import jdk.jfr.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,16 +10,19 @@ import pages.AutoRuPage;
 import pages.components.MarketingPopupComponents;
 import java.util.List;
 
-@DisplayName("Тест поиска моделей автомобиля по бренду")
+
 @Tag("smoke")
-@Description("Тест поиска моделей автомобиля по бренду")
-public class CheckModelForBrand extends TestBase {
+@Story("Отображение моделей при поиске по бренду")
+@DisplayName("Тест поиска моделей автомобилей по бренду")
+public class CheckModelForBrandTest extends TestBase {
 
     AutoRuPage autoRuPage = new AutoRuPage();
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
     @EnumSource(value = BrandAndMarks.class)
-    @ParameterizedTest(name = "Для бренда {0} в списке присутствуют модели авто")
+    @DisplayName("Проверка отображения моделей")
+    @ParameterizedTest(name = "{0}")
+    @Severity(SeverityLevel.TRIVIAL)
     void searchMarksAndBrand(BrandAndMarks brandAndMarks) {
         autoRuPage.openAutoRu();
         marketingPopupComponents.shutdownMarketingPopup();

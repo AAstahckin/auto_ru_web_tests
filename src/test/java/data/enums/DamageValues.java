@@ -7,7 +7,6 @@ public enum DamageValues {
     DENT("Вмятина"),
     SCRATCH("Царапина/Скол");
 
-
     final String typeValue;
 
         DamageValues(String typeValue) {

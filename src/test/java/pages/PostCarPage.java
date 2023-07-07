@@ -20,6 +20,7 @@ import static data.enums.OptionsFields.OPTIONS_HEADER;
 import static data.enums.OptionsParams.*;
 import static data.enums.PtsFields.*;
 import static data.enums.PtsTypeParams.*;
+import static io.qameta.allure.Allure.step;
 import static java.time.Duration.ofSeconds;
 
 public class PostCarPage {
@@ -99,51 +100,52 @@ public class PostCarPage {
             String transmission,
             String horses,
             String color) {
-        Allure.step("Вводим в поисковую строку " + brand);
-        inputMarks.setValue(brand);
-        Allure.step("Выбираем из списка " + brand);
-        markFieldIconSection.$(byText(brand)).click();
-        Allure.step("Выбираем из списка " + model);
-        modelListSection.$(byText(model)).click();
-        Allure.step("Выбираем из списка год " + yearModel);
-        yearModelSection.$(byText(yearModel)).click();
-        Allure.step("Выбираем двигатель " + engineType);
-        engineTypeSection.$(byText(engineType)).click();
-        Allure.step("Выбираем привод " + gearType);
-        gearTypeSection.$(byText(gearType)).click();
-        Allure.step("Выбираем каробку передач " + transmission);
-        transmissionSection.$(byText(transmission)).click();
-        Allure.step("Выбираем модификацию " + horses);
-        techParamSection.$(byText(horses)).click();
-        Allure.step("Выбираем цвет " + color);
-        $(String.format(dataId, color)).click();
+        step("Вводим в поисковую строку " + brand, () ->
+                inputMarks.setValue(brand));
+        step("Выбираем из списка " + brand, () ->
+                markFieldIconSection.$(byText(brand)).click());
+        step("Выбираем из списка " + model, () ->
+                modelListSection.$(byText(model)).click());
+        step("Выбираем из списка год " + yearModel, () ->
+                yearModelSection.$(byText(yearModel)).click());
+        step("Выбираем двигатель " + engineType, () ->
+                engineTypeSection.$(byText(engineType)).click());
+        step("Выбираем привод " + gearType, () ->
+                gearTypeSection.$(byText(gearType)).click());
+        step("Выбираем каробку передач " + transmission, () ->
+                transmissionSection.$(byText(transmission)).click());
+        step("Выбираем модификацию " + horses, () ->
+                techParamSection.$(byText(horses)).click());
+        step("Выбираем цвет", () ->
+                $(String.format(dataId, color)).click());
         checkedMenuSectionTech.shouldHave(visible);
-        Allure.step("Нажимаем на кнопку продолжить");
-        buttonBlue.should(visible, ofSeconds(5)).hover().click();
+        step("Нажимаем на кнопку продолжить", () ->
+                buttonBlue.should(visible, ofSeconds(5)).hover().click());
         return this;
     }
 
     @Step("Заполняем пробег")
     public PostCarPage setMileage(String value) {
         buttonTransparentBlue.shouldHave(editable);
-        Allure.step("Вводим в поле пробег " + value);
-        mileageInput.setValue(value);
+        step("Вводим в поле пробег " + value, () ->
+                mileageInput.setValue(value));
         checkedMenuSectionMileage.shouldHave(visible);
-        Allure.step("Нажимаем на кнопку продолжить");
-        buttonBlue.should(visible, ofSeconds(5)).hover().click();
+        step("Нажимаем на кнопку продолжить", () ->
+                buttonBlue.should(visible, ofSeconds(5)).hover().click());
         return this;
     }
 
     @Step("Добавляем фото")
     public PostCarPage inputPhoto(String pathFile) {
         File file = new File(pathFile);
-        fileInput.uploadFile(file);
+        step("Загружаем файл " + file.getName(), () ->
+                fileInput.uploadFile(file));
         photoLoader.shouldNotBe(visible);
         checkedMenuSectionPhotos.shouldHave(visible);
-        Allure.step("Нажимаем на кнопку продолжить");
-        buttonBlue.should(visible, ofSeconds(5)).hover().click();
-        Allure.step("Проверяем отображение текста о не распозновании номера");
-        invalidGrzContent.shouldHave(text("Мы не распознали госномер на фото. Проверьте, что он виден хотя бы на одном снимке, иначе объявление может быть заблокировано."));
+        step("Нажимаем на кнопку продолжить", () ->
+                buttonBlue.should(visible, ofSeconds(5)).hover().click());
+        step("Проверяем отображение текста о не распозновании номера", () ->
+                invalidGrzContent.shouldHave(text("Мы не распознали госномер на фото. Проверьте, что он виден хотя бы на одном снимке, иначе объявление может быть заблокировано.")));
         return this;
     }
 
@@ -151,55 +153,61 @@ public class PostCarPage {
     public PostCarPage checkPts() {
         seventhStep.should(visible, ofSeconds(3));
         buttonTransparentBlue.should(visible, ofSeconds(5));
-        Allure.step("Проверяем отображение названия блока");
-        seventhStep.should(text(PTS_HEADER.getField()), ofSeconds(3));
-        Allure.step("Проверяем отображение текста 'Тип документа'");
-        ptsStatusHeader.should(text(PTS_TYPE_DOCUMENT.getField()));
-        Allure.step("Проверяем отображение полей год и месяц");
-        ptsDateHeader.should(text(PTS_SALE_DATE.getField()));
-        Allure.step("Проверяем отображение кнопок с видом ПТС");
-        ptsTypeSelection.shouldHave(texts(ORIGINAL_PTS.getValue(), DUPLICATE_PTS.getValue(), NO_PTS.getValue()));
+        step("Проверяем отображение названия блока", () ->
+                seventhStep.should(text(PTS_HEADER.getField()), ofSeconds(3)));
+        step("Проверяем отображение текста 'Тип документа'", () ->
+                ptsStatusHeader.should(text(PTS_TYPE_DOCUMENT.getField())));
+        step("Проверяем отображение полей год и месяц", () ->
+                ptsDateHeader.should(text(PTS_SALE_DATE.getField())));
+        step("Проверяем отображение кнопок с видом ПТС", () ->
+                ptsTypeSelection.shouldHave(texts(ORIGINAL_PTS.getValue(), DUPLICATE_PTS.getValue(), NO_PTS.getValue())));
         return this;
     }
 
     @Step("Заполняем тип ПТС и количество владельцев")
     public PostCarPage setPtsDocumentType(String documentType, String owner) {
-        Allure.step("Выбираем " + documentType);
-        seventhStep.$(byText(documentType)).click();
-        Allure.step("Выбираем " + owner);
-        documentTypePtsComponents.choiceDocumentTypePts(documentType, owner);
+        step("Выбираем " + documentType, () ->
+                seventhStep.$(byText(documentType)).click());
+        step("Выбираем " + owner, () ->
+                documentTypePtsComponents.choiceDocumentTypePts(documentType, owner));
         checkedMenuSectionPts.shouldHave(visible);
         return this;
     }
 
     @Step("Заполняем в блоке ПТС год и месяц приобретения автомобиля")
     public PostCarPage setPtsYearPurchaseCar(String yearSale, String mouth) {
-        seventhStep.$(byText(PTS_YEAR.getField())).click();
-        Allure.step("Заполняем год  " + yearSale);
-        yearRadioSelection.$(byText(yearSale)).click();
-        seventhStep.$(byText(PTS_MONTH.getField())).click();
-        Allure.step("Заполняем месяц  " + mouth);
-        yearRadioSelection.$(byText(mouth)).click();
+        step("Нажимаем на " + PTS_YEAR.getField(), () ->
+                seventhStep.$(byText(PTS_YEAR.getField())).click());
+        step("Заполняем год  " + yearSale, () ->
+                yearRadioSelection.$(byText(yearSale)).click());
+        step("Нажимаем на " + PTS_MONTH.getField(), () ->
+                seventhStep.$(byText(PTS_MONTH.getField())).click());
+        step("Заполняем месяц  " + mouth, () ->
+                yearRadioSelection.$(byText(mouth)).click());
         return this;
     }
 
     @Step("Проставляем чекбокс 'Не растаможен'")
     public PostCarPage setPtsNotCleared() {
-        seventhStep.$(byText(PTS_NOT_CLEARED.getField())).click();
+        step("Нажимаем на " + PTS_NOT_CLEARED.getField(), () ->
+                seventhStep.$(byText(PTS_NOT_CLEARED.getField())).click());
         return this;
     }
 
     @Step("Заполняем ПТС блок 'Гарантия'")
     public PostCarPage setPtsGuarantee(String year, String mouth) {
-        seventhStep.$(byText(PTS_GUARANTEE.getField())).click();
-        seventhStep.$(byText(PTS_GUARANTEE_YEAR_OF_ENDING.getField())).click();
-        Allure.step("Заполняем год  " + year);
-        yearRadioSelection.$(byText(year)).click();
-        seventhStep.$(byText(PTS_GUARANTEE_END_MONTH.getField())).click();
-        Allure.step("Заполняем год  " + mouth);
-        yearRadioSelection.$(byText(mouth)).click();
-        Allure.step("Нажимаем на кнопку продолжить");
-        buttonBlue.should(visible, ofSeconds(5)).hover().click();
+        step("Нажимаем на " + PTS_GUARANTEE.getField(), () ->
+                seventhStep.$(byText(PTS_GUARANTEE.getField())).click());
+        step("Нажимаем на " + PTS_GUARANTEE_YEAR_OF_ENDING.getField(), () ->
+                seventhStep.$(byText(PTS_GUARANTEE_YEAR_OF_ENDING.getField())).click());
+        step("Заполняем год  " + year, () ->
+                yearRadioSelection.$(byText(year)).click());
+        step("Нажимаем на " + PTS_GUARANTEE_END_MONTH.getField(), () ->
+                seventhStep.$(byText(PTS_GUARANTEE_END_MONTH.getField())).click());
+        step("Заполняем год  " + mouth, () ->
+                yearRadioSelection.$(byText(mouth)).click());
+        step("Нажимаем на кнопку продолжить", () ->
+                buttonBlue.should(visible, ofSeconds(5)).hover().click());
         return this;
     }
 
@@ -212,13 +220,12 @@ public class PostCarPage {
         conditionBeatenField.shouldHave(text(DESCRIPTION_BEATEN.getField()));
         buttonGray.should(editable, ofSeconds(5));
         inputDescription.click();
-        Allure.step("Вводим текст в поле");
-        inputDescription.setValue(valeText);
-        Allure.step("Выбираем параметр " + valueDescriptionParams + " из списка ");
-        eighthStep.$(byText(valueDescriptionParams)).hover().click();
+        step("Вводим текст в поле " + valeText, () ->
+                inputDescription.setValue(valeText));
+        step("Выбираем параметр " + valueDescriptionParams + " из списка ", () ->
+                eighthStep.$(byText(valueDescriptionParams)).hover().click());
         checkedMenuDescription.shouldHave(visible);
-        Allure.step("Нажимаем на кнопку продолжить");
-        buttonBlue.should(visible, ofSeconds(5)).hover().click();
+        step("Нажимаем на кнопку продолжить", () -> buttonBlue.should(visible, ofSeconds(5)).hover().click());
         return this;
     }
 
@@ -232,12 +239,12 @@ public class PostCarPage {
         equipmentField.shouldHave(text(OPTIONS_IMMOBILIZER.getOptionsValue()));
         allEquipment.should(visible, ofSeconds(5));
         blockButtons.should(visible, ofSeconds(5));
-        Allure.step("Выбираем оцию " + option);
-        sectionOptionsEquipment.$(byText(option)).click();
+        step("Выбираем оцию " + option, () ->
+                sectionOptionsEquipment.$(byText(option)).click());
         buttonSkip.shouldNotBe(visible);
         checkedMenuEquipment.shouldHave(visible);
-        Allure.step("Нажимаем на кнопку продолжить");
-        buttonBlue.should(visible, ofSeconds(5)).hover().click();
+        step("Нажимаем на кнопку продолжить", () ->
+                buttonBlue.should(visible, ofSeconds(5)).hover().click());
         return this;
     }
 
@@ -245,8 +252,8 @@ public class PostCarPage {
     public PostCarPage setDamage(String damageType, String damageValue) {
         tenthStep.should(text("Повреждения"), ofSeconds(5));
         damageTypePtsComponents.clickDamageType(damageType, damageValue);
-        Allure.step("Нажимаем на кнопку продолжить");
-        buttonBlue.should(visible, ofSeconds(5)).hover().click();
+        step("Нажимаем на кнопку продолжить", () ->
+                buttonBlue.should(visible, ofSeconds(5)).hover().click());
         return this;
     }
 
@@ -254,39 +261,39 @@ public class PostCarPage {
     public PostCarPage setContacts(String userName, String email, String phone) {
         eleventhStep.shouldHave(text("Контакты"));
         $(buttonWithLoader).shouldHave(visible);
-        Allure.step("Заполняем " + userName);
-        UserNameField.setValue(userName);
-        Allure.step("Заполняем " + email);
-        emailField.setValue(email);
-        Allure.step("Заполняем " + phone);
-        phonesField.setValue(phone);
+        step("Заполняем " + userName, () ->
+                UserNameField.setValue(userName));
+        step("Заполняем " + email, () ->
+                emailField.setValue(email));
+        step("Заполняем " + phone, () ->
+                phonesField.setValue(phone));
         return this;
     }
 
     @Step("Нажимаем сбросить и переходим на главную страницу")
     public PostCarPage clickResetButton() {
-        resetButton.click();
+        resetButton.shouldHave(visible).click();
         confirm();
-        closeRedButton.click();
+        closeRedButton.shouldHave(visible).click();
         return this;
     }
 
     @Step("Нажимаем закрыть")
     public PostCarPage closeRedButton() {
-        closeRedButton.click();
+        closeRedButton.shouldHave(visible).click();
         return this;
     }
 
     @Step("Выполняем поиск по VIN")
     public PostCarPage searchVin(String vin, String brand) {
-        Allure.step("Заполняем в поле поиска " + brand);
-        inputMarks.setValue(brand);
-        Allure.step("Выбираем " + brand);
-        markFieldIconSection.$(byText(brand)).click();
-        Allure.step("Вводим " + vin);
-        inputVin.setValue(vin);
-        Allure.step("Нажимаем заполнить");
-        buttonAccordionVin.click();
+        step("Заполняем в поле поиска " + brand, () ->
+                inputMarks.setValue(brand));
+        step("Выбираем " + brand, () ->
+                markFieldIconSection.$(byText(brand)).click());
+        step("Вводим " + vin, () ->
+                inputVin.setValue(vin));
+        step("Нажимаем заполнить", () ->
+                buttonAccordionVin.click());
         return this;
     }
 
@@ -300,14 +307,14 @@ public class PostCarPage {
             String drive,
             String transmission,
             String modification) {
-        Allure.step("Проверяем что в шапке присутствует " + brand);
-        withSubtitle.shouldHave(text(brand));
-        Allure.step("Проверяем что в шапке присутствует " + yearAuto);
-        subtitle.shouldHave(text(yearAuto));
-        Allure.step("Проверяем что в шапке присутствует " + body);
-        subtitle.shouldHave(text(body));
-        Allure.step("Проверяем что в шапке присутствует " + modification);
-        subtitle.shouldHave(text(modification));
+        step("Проверяем что в шапке присутствует " + brand, () ->
+                withSubtitle.shouldHave(text(brand)));
+        step("Проверяем что в шапке присутствует " + yearAuto, () ->
+                subtitle.shouldHave(text(yearAuto)));
+        step("Проверяем что в шапке присутствует " + body, () ->
+                subtitle.shouldHave(text(body)));
+        step("Проверяем что в шапке присутствует " + modification, () ->
+                subtitle.shouldHave(text(modification)));
         Allure.step("Проверяем блок Характеристики");
         markInputText.shouldHave(attribute("value", brand));
         modelInputText.shouldHave(attribute("value", model));

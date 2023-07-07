@@ -1,4 +1,4 @@
-import jdk.jfr.Description;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,9 +7,9 @@ import pages.AutoRuPage;
 import pages.components.MarketingPopupComponents;
 
 @Tag("smoke")
-@DisplayName("Проверка поиска автомобиля по бренду и модели")
-@Description("Проверка поиска автомобиля по бренду и модели")
-public class SearchBrandAndModel extends TestBase {
+@Story("Поиск автомобиля")
+@DisplayName("Поиск автомобиля по бренду и модели")
+public class SearchBrandAndModelTest extends TestBase {
 
     AutoRuPage autoRuPage = new AutoRuPage();
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();

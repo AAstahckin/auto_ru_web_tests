@@ -1,5 +1,5 @@
 import data.enums.TransportType;
-import jdk.jfr.Description;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,16 +8,19 @@ import pages.AutoRuPage;
 import pages.components.MarketingPopupComponents;
 import java.util.List;
 
-@DisplayName("Проверка отображения видов транспорта на главной странице")
 @Tag("smoke")
-@Description("Проверка отображения видов транспорта на главной странице")
-public class CheckTypeTransport extends TestBase {
+@Story("Виды транспорта на главной странице")
+@DisplayName("Проверка отображения видов транспорта на главной странице")
+@Owner("Aleksey_Astashkin")
+public class CheckTypeTransportTest extends TestBase {
 
     AutoRuPage autoRuPage = new AutoRuPage();
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
+    @DisplayName("Отображение видов транспорта")
     @EnumSource(value = TransportType.class)
-    @ParameterizedTest(name = "При наведенеии в Header на элемент : {0} отображаются виды транспорта")
+    @ParameterizedTest(name = ": {0}")
+    @Severity(SeverityLevel.TRIVIAL)
     void searchMarksAndBrand(TransportType transportType) {
         autoRuPage.openAutoRu();
         marketingPopupComponents.shutdownMarketingPopup();
