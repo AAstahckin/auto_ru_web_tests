@@ -9,6 +9,8 @@ import static io.qameta.allure.Allure.step;
 
 public class SaleCarPopupComponent {
 
+    MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
+
     SelenideElement
             inputMarks = $(".TextInput__input .TextInput__box .TextInput__control"),
     offerInitialScreenCar = $(".OfferInitialScreenCarInfo__handMadeButton-DP9Gg");
@@ -20,6 +22,7 @@ public class SaleCarPopupComponent {
             Selenide.clearBrowserCookies();
             Allure.step("Перезагружаем страницу");
             Selenide.refresh();
+            marketingPopupComponents.shutdownMarketingPopup();
             step("Вводим в поисковую строку " + brand, () ->
                     inputMarks.setValue(brand));
         }
