@@ -1,6 +1,7 @@
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,6 +18,10 @@ public class SaleAnnouncementTest extends TestBase {
 
     @BeforeEach
     void forTest() {
+        Selenide.clearBrowserCookies();
+    }
+    @AfterEach
+    void forTest1() {
         Selenide.clearBrowserCookies();
     }
 
@@ -67,8 +72,7 @@ public class SaleAnnouncementTest extends TestBase {
                 .setOptions(options)
                 .setDamage(damageType, damageValue)
                 .setContacts(userName, email, phone)
-                .clickResetButton()
-                .closeRedButton();
+                .clickResetButton();
     }
 
 }

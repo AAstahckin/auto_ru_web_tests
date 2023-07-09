@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +18,10 @@ public class SearchVinCodeTest extends TestBase {
     void forTest() {
         Selenide.clearBrowserCookies();
     }
-
+    @AfterEach
+    void forTest1() {
+        Selenide.clearBrowserCookies();
+    }
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
     AutoRuPage autoRuPage = new AutoRuPage();
     PostCarPage postCarPage = new PostCarPage();

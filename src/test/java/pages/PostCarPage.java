@@ -278,22 +278,23 @@ public class PostCarPage {
 
     @Step("Нажимаем сбросить и переходим на главную страницу")
     public PostCarPage clickResetButton() {
-        resetButton.shouldHave(visible).click();
+        resetButton.shouldHave(visible).hover().click();
         confirm();
-        closeRedButton.shouldHave(visible).click();
+        markFieldIconSection.shouldHave(visible, ofSeconds(5));
+        closeRedButton.shouldHave(visible).hover().click();
         return this;
     }
 
     @Step("Нажимаем закрыть")
     public PostCarPage closeRedButton() {
-        closeRedButton.shouldHave(visible).click();
+        closeRedButton.shouldHave(visible).hover().click();
         return this;
     }
 
     @Step("Выполняем поиск по VIN")
     public PostCarPage searchVin(String vin, String brand) {
         step("Заполняем в поле поиска " + brand, () ->
-                inputMarks.setValue(brand));
+                inputMarks.should(visible, ofSeconds(8)).setValue(brand));
         step("Выбираем " + brand, () ->
                 markFieldIconSection.$(byText(brand)).click());
         step("Вводим " + vin, () ->
