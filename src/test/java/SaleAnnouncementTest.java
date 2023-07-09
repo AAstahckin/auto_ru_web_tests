@@ -52,9 +52,8 @@ public class SaleAnnouncementTest extends TestBase {
         String options = getRandomOptionsParams();
         String descriptionText = getRandomText(100);
 
-        autoRuPage.openAutoRu();
+        postCarPage.openSaleCars();
         marketingPopupComponents.shutdownMarketingPopup();
-        autoRuPage.clickAddButton();
         postCarPage
                 .setCharacteristics(brand, model, yearModel, engineType, gearType, transmission, horses, color)
                 .setMileage(mileage)

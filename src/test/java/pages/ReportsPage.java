@@ -31,7 +31,7 @@ public class ReportsPage {
         step("", () ->
                 vinText.shouldHave(text("Соберём данные из десятков источников: ДТП, юридические ограничения, пробеги, обслуживание, предыдущие размещения на Авто.ру и многое другое")));
         step("", () ->
-                vinInput.shouldHave(visible));
+                vinInput.shouldHave(visible, ofSeconds(5)));
         step("", () ->
                 historyByVin.shouldHave(visible));
         step("", () ->
@@ -43,6 +43,7 @@ public class ReportsPage {
 
     @Step("Вводим в поле VIN {vinValue}")
     public ReportsPage vinSetValue(String vinValue) {
+        vinInput.hover().click();
         step("", () ->
                 vinInput.should(visible, ofSeconds(5)).setValue(vinValue));
         step("", () ->

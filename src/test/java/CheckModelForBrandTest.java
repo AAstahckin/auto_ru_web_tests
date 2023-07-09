@@ -13,15 +13,15 @@ import java.util.List;
 
 @Tag("smoke")
 @Story("Отображение моделей при поиске по бренду")
-@DisplayName("Тест поиска моделей автомобилей по бренду")
+@DisplayName("Тест поиска моделей по бренду")
 public class CheckModelForBrandTest extends TestBase {
 
     AutoRuPage autoRuPage = new AutoRuPage();
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
     @EnumSource(value = BrandAndMarks.class)
-    @DisplayName("Проверка отображения моделей")
-    @ParameterizedTest(name = "{0}")
+    @DisplayName("Проверка отображения моделей для бренда")
+    @ParameterizedTest(name = ": [{0}]")
     @Severity(SeverityLevel.TRIVIAL)
     void searchMarksAndBrand(BrandAndMarks brandAndMarks) {
         autoRuPage.openAutoRu();

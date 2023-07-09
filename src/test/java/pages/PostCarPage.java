@@ -90,6 +90,12 @@ public class PostCarPage {
             ptsTypeSelection = $$(".OfferFormPtsStatusField button");
     String dataId = "[data-id=%s]";
 
+    @Step("Нажимаем закрыть")
+    public PostCarPage openSaleCars() {
+        open("cars/used/add/");
+        return this;
+    }
+
     @Step("Заполняем технический блок")
     public PostCarPage setCharacteristics(
             String brand,

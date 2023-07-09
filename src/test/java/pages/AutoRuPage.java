@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
+import static java.time.Duration.ofSeconds;
 
 public class AutoRuPage {
 
@@ -44,15 +45,18 @@ public class AutoRuPage {
         return this;
     }
 
-    @Step("Нажимаем на меню {value}")
+    @Step("Нажимаем на меню Отчеты")
     public AutoRuPage clickHeaderReports() {
-        headerMainNav.click();
+        headerMainNav.shouldHave(visible, ofSeconds(5)).click();
         return this;
     }
 
     @Step("Нажимаем на бренд {brand}")
     public AutoRuPage clickBrandAuto(String brand) {
-        marksIndexSelector.$(byText(brand)).click();
+        marksIndexSelector
+                .$(byText(brand))
+                .shouldHave(visible, ofSeconds(8))
+                .click();
         return this;
     }
 
