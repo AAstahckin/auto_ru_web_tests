@@ -19,6 +19,7 @@ public class TestBase {
         Configuration.browserVersion = browser[1];
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
         Configuration.pageLoadStrategy = "eager";
+        Configuration.timeout = 10000;
         Configuration.remote = System.getProperty("selenoid_url");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
