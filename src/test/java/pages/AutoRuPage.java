@@ -62,9 +62,8 @@ public class AutoRuPage {
 
     @Step("Проверка списка автомобилей по бренду")
     public AutoRuPage checkTitleModel(String brand, List<String> model) {
-        Allure.step("");
         step("Проверяем что в строке поиска присутствет выбранный бренд "  + brand, () ->
-                selectedBrand.shouldHave(text(brand)));
+                selectedBrand.shouldHave(text(brand), ofSeconds(5)));
         step("Проверяем что названии поиска присутствует: Купить - ", () ->
                 titleHead.shouldHave(text("Купить " + brand)));
         step("Проверяем что в списке присутствуют автомобили", () ->

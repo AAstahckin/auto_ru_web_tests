@@ -1,14 +1,12 @@
-import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import pages.AutoRuPage;
 import pages.PostCarPage;
 import pages.components.MarketingPopupComponents;
+import pages.components.SaleCarPopupComponent;
+
 import static utils.RandomUtils.*;
 
 @Story("Заполнение формы о продаже авто")
@@ -16,18 +14,9 @@ import static utils.RandomUtils.*;
 @Owner("Aleksey_Astashkin")
 public class SaleAnnouncementTest extends TestBase {
 
-    @BeforeEach
-    void forTest() {
-        Selenide.clearBrowserCookies();
-    }
-    @AfterEach
-    void forTest1() {
-        Selenide.clearBrowserCookies();
-    }
-
-    AutoRuPage autoRuPage = new AutoRuPage();
     PostCarPage postCarPage = new PostCarPage();
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
+    SaleCarPopupComponent saleCarPopupComponent = new SaleCarPopupComponent();
 
     @DisplayName("Ручное заполнение формы")
     @CsvFileSource(resources = "/testDataAutomobile.csv")
@@ -59,6 +48,7 @@ public class SaleAnnouncementTest extends TestBase {
 
         postCarPage.openSaleCars();
         marketingPopupComponents.shutdownMarketingPopup();
+        saleCarPopupComponent.shutdownMarketingPopup(brand);
         postCarPage
                 .setCharacteristics(brand, model, yearModel, engineType, gearType, transmission, horses, color)
                 .setMileage(mileage)
