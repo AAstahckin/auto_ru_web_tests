@@ -18,7 +18,6 @@ import pages.components.SaleCarPopupComponent;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.sessionId;
 
 public class TestBase {
 

@@ -39,18 +39,27 @@
 ### Варианты запуска тестов
 - ```test``` -Запуск всех тестов
 - ```sanity``` -Запуск тестов sanity
-### Запуск тестов из удаленного репозитория
+### Запуск тестов из удаленного браузера
+```
+gradle clean test -Dbrowser=chrome -DbrowserSize=1920x1080 -DbrowserVersion=100.0 -DbaseUrl=https://auto.ru/ -DremoteUrl=https://user1:1234@selenoid.autotests.cloud/wd/hub"
+```
+### Запуск тестов из терминала
 ```
 gradle clean test"
 ```
+
+
 При выполнении команды тесты запустятся локально.
 
-## <img width="4%" style="vertical-align:middle" title="Jenkins" src="media/logo/Jenkins.svg"> Сборка в Jenkins
+## <img width="4%" style="vertical-align:middle" title="Jenkins" src="media/logo/Jenkins.svg"> [Сборка в Jenkins](https://jenkins.autotests.cloud/job/Students/job/C19-Aleksey_Astashkin-unit15/build?delay=0sec)
+
+
 ### Параметры сборки
-* <code>BROWSER</code> – браузер и его версия. По-умолчанию - <code>chrome:100.0</code>.
+* <code>BROWSER</code> – браузер <code>chrome</code>.
+* <code>BROWSER_VERSION</code> – версия браузера<code>chrome:100.0</code>.
 * <code>BROWSER_SIZE</code> – размер окна браузера. По-умолчанию - <code>1920x1080</code>.
 * <code>BASE_URL</code> – url, по которому будет открываться тестируемое приложение. По-умолчанию - <code>https://auto.ru/</code>.
-* <code>SELENOID_URL</code> – адрес удалённого браузера.
+* <code>REMOTE_URL</code> – адрес удалённого браузера.
 
 <p align="center">
 <img title="Jenkins Build" src="media/screens/jenkins build.png">
@@ -73,7 +82,7 @@ gradle clean test"
 <img title="Test Results in Alure" src="media/screens/AllureSuites.png">
 </p>
 
-## <img width="4%" style="vertical-align:middle" title="Allure TestOps" src="media/logo/AllureTestOps.svg"> Интеграция с Allure TestOps
+## <img width="4%" style="vertical-align:middle" title="Allure TestOps" src="media/logo/AllureTestOps.svg"> [Интеграция с Allure TestOps](https://allure.autotests.cloud/project/3332/launches)
 На вкладке Dashboards отображается:
 - Количество тест-кейсов и их статус
 - Соотношение ручных/автоматизированных тестов
@@ -83,7 +92,8 @@ gradle clean test"
 </p>
 
 На вкладке Launches можно увидеть:
-- Результаты запусков автоматизированных тестов
+- Результаты запусков автоматизированных тестов из Jenkins
+- Результаты запусков автоматизированных тестов из Allure TestOps
 - Результаты прохождения ручных тест-кейсов
 <p align="center">
 <img title="Allure TestOps DashBoard" src="media/screens/LaunchesTestOps.png">

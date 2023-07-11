@@ -88,8 +88,8 @@ public class AddCarPage {
             closeRedButton = $(".Link_color_red");
 
     ElementsCollection
-            ptsTypeSelection = $$(".OfferFormPtsStatusField button"),
-            logoMark = $$(".MarkFieldTile__logo");
+            ptsTypeSelection = $$(".OfferFormPtsStatusField button");
+
     String dataId = "[data-id=%s]";
 
     @Step("Нажимаем закрыть")
@@ -275,22 +275,6 @@ public class AddCarPage {
                 emailField.setValue(email));
         step("Заполняем " + phone, () ->
                 phonesField.setValue(phone));
-        return this;
-    }
-
-    @Step("Нажимаем сбросить и переходим на главную страницу")
-    public AddCarPage clickResetButton() {
-        resetButton.shouldHave(visible).hover().click();
-        confirm();
-        markFieldIconSection.shouldHave(visible, ofSeconds(5));
-        closeRedButton.shouldHave(visible).hover().click();
-        Selenide.clearBrowserCookies();
-        return this;
-    }
-
-    @Step("Нажимаем закрыть")
-    public AddCarPage closeRedButton() {
-        closeRedButton.shouldHave(visible).hover().click();
         return this;
     }
 
