@@ -22,7 +22,8 @@ public class ReportsPage {
             continueButton = $(".VinCheckSnippetDesktop__input .Button__content");
 
     ElementsCollection
-            listOutputParams = $$(".VinReportPreviewDesktop__top .VinReportPreviewDesktop__info div");
+            listOutputParams = $$(".VinReportPreviewDesktop__top .VinReportPreviewDesktop__info div"),
+            itemImagePromoBlock = $$(".HistoryByVinPromoBlock__itemImage");
 
     @Step("Проверяем страницу Отчеты")
     public ReportsPage checkWindowReports() {
@@ -43,6 +44,7 @@ public class ReportsPage {
 
     @Step("Вводим в поле VIN {vinValue}")
     public ReportsPage vinSetValue(String vinValue) {
+        itemImagePromoBlock.get(9).shouldHave(visible, ofSeconds(15));
         vinInput.hover().click();
         step("", () ->
                 vinInput.should(visible, ofSeconds(5)).setValue(vinValue));

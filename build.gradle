@@ -33,6 +33,7 @@ dependencies {
             "io.qameta.allure:allure-selenide:$allureVersion",
             "com.github.javafaker:javafaker:$javaFakerVersion",
             "org.junit.jupiter:junit-jupiter:$jUnitVersion",
+            "com.opencsv:opencsv:5.7.1",
             "org.slf4j:slf4j-simple:$slf4jVersion"
     )
 }

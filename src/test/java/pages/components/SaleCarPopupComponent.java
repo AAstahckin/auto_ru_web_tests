@@ -1,8 +1,6 @@
 package pages.components;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
@@ -16,16 +14,9 @@ public class SaleCarPopupComponent {
     offerInitialScreenCar = $(".OfferInitialScreenCarInfo__handMadeButton-DP9Gg");
 
     @Step("Убираем рекламное окно")
-    public void shutdownMarketingPopup(String brand) {
+    public void shutdownMarketingPopup() {
         if (offerInitialScreenCar.isDisplayed()) {
-            Allure.step("Очищаем куки");
-            Selenide.clearBrowserCookies();
-            Allure.step("Перезагружаем страницу");
-            Selenide.refresh();
-            marketingPopupComponents.shutdownMarketingPopup();
-            step("Вводим в поисковую строку " + brand, () ->
-                    inputMarks.setValue(brand));
+            offerInitialScreenCar.hover().click();
         }
-
     }
 }

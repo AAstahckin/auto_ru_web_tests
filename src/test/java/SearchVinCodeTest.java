@@ -32,10 +32,9 @@ public class SearchVinCodeTest extends TestBase {
             String transmission,
             String modification) {
 
-        autoRuPage.openAutoRu();
+        postCarPage.openSaleCars();
         marketingPopupComponents.shutdownMarketingPopup();
-        autoRuPage.clickAddButton();
-        saleCarPopupComponent.shutdownMarketingPopup(brand);
+        saleCarPopupComponent.shutdownMarketingPopup();
         postCarPage
                 .searchVin(vin, brand)
                 .checkTexParam(
@@ -46,8 +45,7 @@ public class SearchVinCodeTest extends TestBase {
                         engine,
                         drive,
                         transmission,
-                        modification)
-                .clickResetButton();
+                        modification);
    }
 
 }

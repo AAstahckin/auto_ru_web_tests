@@ -48,7 +48,7 @@ public class SaleAnnouncementTest extends TestBase {
 
         postCarPage.openSaleCars();
         marketingPopupComponents.shutdownMarketingPopup();
-        saleCarPopupComponent.shutdownMarketingPopup(brand);
+        saleCarPopupComponent.shutdownMarketingPopup();
         postCarPage
                 .setCharacteristics(brand, model, yearModel, engineType, gearType, transmission, horses, color)
                 .setMileage(mileage)
@@ -61,8 +61,7 @@ public class SaleAnnouncementTest extends TestBase {
                 .setDescription(descriptionText,descriptionParam)
                 .setOptions(options)
                 .setDamage(damageType, damageValue)
-                .setContacts(userName, email, phone)
-                .clickResetButton();
+                .setContacts(userName, email, phone);
     }
 
 }

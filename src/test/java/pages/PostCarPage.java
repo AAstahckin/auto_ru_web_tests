@@ -1,6 +1,8 @@
 package pages;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
@@ -87,7 +89,8 @@ public class PostCarPage {
             closeRedButton = $(".Link_color_red");
 
     ElementsCollection
-            ptsTypeSelection = $$(".OfferFormPtsStatusField button");
+            ptsTypeSelection = $$(".OfferFormPtsStatusField button"),
+            logoMark = $$(".MarkFieldTile__logo");
     String dataId = "[data-id=%s]";
 
     @Step("Нажимаем закрыть")
@@ -109,9 +112,9 @@ public class PostCarPage {
         step("Вводим в поисковую строку " + brand, () ->
                 inputMarks.setValue(brand));
         step("Выбираем из списка " + brand, () ->
-                markFieldIconSection.$(byText(brand)).click());
+                markFieldIconSection.shouldHave(visible,ofSeconds(5)).$(byText(brand)).hover().click());
         step("Выбираем из списка " + model, () ->
-                modelListSection.$(byText(model)).click());
+                modelListSection.shouldHave(visible,ofSeconds(5)).$(byText(model)).hover().click());
         step("Выбираем из списка год " + yearModel, () ->
                 yearModelSection.$(byText(yearModel)).click());
         step("Выбираем двигатель " + engineType, () ->
@@ -282,6 +285,7 @@ public class PostCarPage {
         confirm();
         markFieldIconSection.shouldHave(visible, ofSeconds(5));
         closeRedButton.shouldHave(visible).hover().click();
+        Selenide.clearBrowserCookies();
         return this;
     }
 
