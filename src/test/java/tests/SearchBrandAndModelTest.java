@@ -15,7 +15,8 @@ public class SearchBrandAndModelTest extends TestBase {
             "Toyota Highlander", "Toyota Avensis", "Kia Magentis", "Mitsubishi Lancer",
             "BMW X5", "Mercedes-Benz GL-Класс", "LADA (ВАЗ) 2121 (4x4)"
     })
-    @ParameterizedTest(name = "Проверка поиска автомобиля {0} в поиске")
+    @DisplayName("Поиск автомобиля")
+    @ParameterizedTest(name = "[{0}]")
     void searchMarksAndBrand(String searchQuery) {
         autoRuPage.openAutoRu();
         marketingPopupComponents.shutdownMarketingPopup();

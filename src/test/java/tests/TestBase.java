@@ -17,6 +17,9 @@ import pages.components.SaleCarPopupComponent;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.sessionId;
+
 public class TestBase {
 
     AddCarPage addCarPage = new AddCarPage();
@@ -35,7 +38,6 @@ public class TestBase {
         Configuration.browserVersion = config.getBrowserVersion();
         Configuration.browserSize = config.getBrowserSize();
         Configuration.timeout = 10000;
-        Configuration.remote = System.getProperty("selenoid_url");
 
         if (config.getRemoteURL() != null) {
             Configuration.remote = config.getRemoteURL();
@@ -60,7 +62,7 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-        Selenide.closeWebDriver();
+        closeWebDriver();
     }
 
 }

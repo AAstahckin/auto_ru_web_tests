@@ -58,7 +58,7 @@ public class AutoRuPage {
 
     @Step("Проверка списка автомобилей по бренду")
     public AutoRuPage checkTitleModel(String brand, List<String> model) {
-        step("Проверяем что в строке поиска присутствет выбранный бренд "  + brand, () ->
+        step("Проверяем что в строке поиска присутствет выбранный бренд " + brand, () ->
                 selectedBrand.shouldHave(text(brand), ofSeconds(5)));
         step("Проверяем что названии поиска присутствует: Купить - ", () ->
                 titleHead.shouldHave(text("Купить " + brand)));
@@ -83,8 +83,10 @@ public class AutoRuPage {
         regionIndicators.shouldHave(visible);
         step("Вводим в поле поиска " + value, () ->
                 searchInput.setValue(value));
+        step("Ожидаем выпадающий список", () ->
+                searchOutputTitle.shouldHave(visible, ofSeconds(15)));
         step("В выпадающем окне нажимаем на бренд с моделью", () ->
-                searchOutputTitle.shouldHave(text(value)).click());
+        searchOutputTitle.shouldHave(text(value)).click());
         step("Проверяем что названии поиска присутствует: Купить - ", () ->
                 titleHead.shouldHave(text("Купить " + value)));
         step("Проверяем что в фильтре выбран бренд и модель", () ->

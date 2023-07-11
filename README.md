@@ -37,11 +37,11 @@
 
 ## :arrow_forward: Запуск автотестов
 ### Варианты запуска тестов
-- ```regression_test``` -Запуск всех тестов
-- ```smoke_test``` -Запуск тестов smoke
-### Запуск тестов из терминала
+- ```test``` -Запуск всех тестов
+- ```sanity``` -Запуск тестов sanity
+### Запуск тестов из удаленного репозитория
 ```
-gradle clean regression_test -Dbrowser="chrome:100.0" -Dbrowser_size="1920x1080" -Dbase_url="https://auto.ru" -Dselenoid_url="https://LOGIN:PASS@selenoid.autotests.cloud/wd/hub"
+gradle clean test"
 ```
 При выполнении команды тесты запустятся локально.
 
@@ -109,7 +109,7 @@ gradle clean regression_test -Dbrowser="chrome:100.0" -Dbrowser_size="1920x1080"
 ### <img width="4%" style="vertical-align:middle" title="Telegram" src="media/logo/Telegram.svg"> Уведомления в Telegram
 После завершения сборки, бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с результатом.
 <p align="center">
-<img title="Allure TestOps DashBoard" src="media/screens/Telegram.png">
+<img title="Telegram" src="media/screens/Telegram.png">
 </p>
 
 ### <img width="4%" style="vertical-align:middle" title="Selenoid" src="media/logo/Selenoid.svg"> Видео пример запуска тестов

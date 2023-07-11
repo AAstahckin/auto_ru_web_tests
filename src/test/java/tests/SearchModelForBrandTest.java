@@ -1,6 +1,7 @@
 package tests;
 
 import data.enums.BrandAndMarks;
+import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Story("Отображение моделей при поиске по бренду")
 @DisplayName("Тест поиска моделей по бренду")
+@Owner("Aleksey_Astashkin")
 public class SearchModelForBrandTest extends TestBase {
 
     @EnumSource(value = BrandAndMarks.class)

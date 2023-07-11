@@ -14,8 +14,7 @@ public class LoginTest extends TestBase {
     LoginPage loginPage = new LoginPage();
 
     @Test
-    @DisplayName("Авторизация")
-    @Description("Проверка отображения страницы авторизации")
+    @DisplayName("Проверка отображения страницы авторизации")
     @Severity(SeverityLevel.BLOCKER)
     @Tag("sanity")
     public void checkLoginTest() {
