@@ -1,20 +1,19 @@
+package tests;
+
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import pages.AutoRuPage;
 import pages.ReportsPage;
-import pages.components.MarketingPopupComponents;
 
 @Story("Вкладка Отчеты")
 @DisplayName("Проверка отчета")
 @Owner("Aleksey_Astashkin")
 public class ReportsTests extends TestBase {
 
-    AutoRuPage autoRuPage = new AutoRuPage();
     ReportsPage reportsPage = new ReportsPage();
-    MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
     @Test
     @Severity(SeverityLevel.TRIVIAL)
@@ -28,11 +27,12 @@ public class ReportsTests extends TestBase {
 
     }
 
-    @CsvFileSource(resources = "/testDataVinCodeAndTexParam.csv")
+    @CsvFileSource(resources = "/testdata/testDataVinCodeAndTexParam.csv")
     @DisplayName("Проверка отчета по vin")
     @Description("Проверка отчета")
     @ParameterizedTest(name = "по vin [{0}], бренд [{1}], модель [{2}]")
     @Severity(SeverityLevel.BLOCKER)
+    @Tag("sanity")
     public void checkLoginTest1(String vin, String brand, String model, String year) {
         autoRuPage.openAutoRu();
         marketingPopupComponents.shutdownMarketingPopup();

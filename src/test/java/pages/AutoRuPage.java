@@ -31,17 +31,12 @@ public class AutoRuPage {
     ElementsCollection
             listingCars = $$(".ListingCars_outputType_list div h3"),
             itemTransport = $$(".HeaderMainNav__subLinks li"),
+            imageMark = $$(".IndexSuperMark__image"),
             listModelsAuto = $$(".ListingPopularMMM__items div a");
 
     @Step("Открываем auto.ru")
     public AutoRuPage openAutoRu() {
         open("");
-        return this;
-    }
-
-    @Step("Нажимаем на кнопку - Разместить бесплатно")
-    public AutoRuPage clickAddButton() {
-        addButton.click();
         return this;
     }
 
@@ -53,6 +48,7 @@ public class AutoRuPage {
 
     @Step("Нажимаем на бренд {brand}")
     public AutoRuPage clickBrandAuto(String brand) {
+        imageMark.get(9).shouldHave(visible, ofSeconds(15));
         marksIndexSelector
                 .$(byText(brand))
                 .shouldHave(visible, ofSeconds(8))

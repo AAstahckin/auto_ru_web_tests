@@ -1,25 +1,22 @@
+package tests;
+
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import pages.PostCarPage;
-import pages.components.MarketingPopupComponents;
-import pages.components.SaleCarPopupComponent;
 
 import static utils.RandomUtils.*;
 
 @Story("Заполнение формы о продаже авто")
 @DisplayName("Ручное заполнение формы")
 @Owner("Aleksey_Astashkin")
-public class SaleAnnouncementTest extends TestBase {
-
-    PostCarPage postCarPage = new PostCarPage();
-    MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
-    SaleCarPopupComponent saleCarPopupComponent = new SaleCarPopupComponent();
+@Tag("sanity")
+public class ManualFillingSalesTest extends TestBase {
 
     @DisplayName("Ручное заполнение формы")
-    @CsvFileSource(resources = "/testDataAutomobile.csv")
+    @CsvFileSource(resources = "/testdata/testDataAutomobile.csv")
     @ParameterizedTest(name = "Заполнение объявления для марки {0}, модель {1}")
     void searchMarksAndBrand2(String brand,
                               String model,
@@ -44,15 +41,15 @@ public class SaleAnnouncementTest extends TestBase {
         String damageType = getRandomDamageTypeParams();
         String damageValue = getRandomDamageValues();
         String options = getRandomOptionsParams();
-        String descriptionText = getRandomText(100);
+        String descriptionText = getRandomText();
 
-        postCarPage.openSaleCars();
+        addCarPage.openSaleCars();
         marketingPopupComponents.shutdownMarketingPopup();
         saleCarPopupComponent.shutdownMarketingPopup();
-        postCarPage
+        addCarPage
                 .setCharacteristics(brand, model, yearModel, engineType, gearType, transmission, horses, color)
                 .setMileage(mileage)
-                .inputPhoto("src/test/resources/transport.jpg")
+                .inputPhoto("src/test/resources/testdata/transport.jpg")
                 .checkPts()
                 .setPtsDocumentType(ptsType, owners)
                 .setPtsYearPurchaseCar(yearSale,mouthSale)

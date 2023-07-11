@@ -1,25 +1,20 @@
+package tests;
+
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import pages.AutoRuPage;
-import pages.PostCarPage;
-import pages.components.MarketingPopupComponents;
-import pages.components.SaleCarPopupComponent;
 
 @Story("Заполнение объявления по VIN")
 @DisplayName("Автоматическое заполнение формы")
 @Owner("Aleksey_Astashkin")
-public class SearchVinCodeTest extends TestBase {
+public class AutomaticFillingSalesTest extends TestBase {
 
-    MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
-    SaleCarPopupComponent saleCarPopupComponent = new SaleCarPopupComponent();
-    AutoRuPage autoRuPage = new AutoRuPage();
-    PostCarPage postCarPage = new PostCarPage();
-
+    @Tag("sanity")
     @DisplayName("Автоматическое заполнение формы")
     @Severity(SeverityLevel.BLOCKER)
-    @CsvFileSource(resources = "/testDataVinCodeAndTexParam.csv")
+    @CsvFileSource(resources = "/testdata/testDataVinCodeAndTexParam.csv")
     @ParameterizedTest(name = "Заполнение объявления по VIN {0}, модель {1}")
     void searchMarksAndBrand2(
             String vin,
@@ -32,10 +27,10 @@ public class SearchVinCodeTest extends TestBase {
             String transmission,
             String modification) {
 
-        postCarPage.openSaleCars();
+        addCarPage.openSaleCars();
         marketingPopupComponents.shutdownMarketingPopup();
         saleCarPopupComponent.shutdownMarketingPopup();
-        postCarPage
+        addCarPage
                 .searchVin(vin, brand)
                 .checkTexParam(
                         brand,

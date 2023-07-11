@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Selenide.$$;
 import static data.enums.PtsFields.PTS_OWNERS;
 import static data.enums.PtsOwnersParams.*;
 import static data.enums.PtsTypeParams.NO_PTS;
+import static io.qameta.allure.Allure.step;
 
 public class DocumentTypePtsComponents {
 
@@ -25,11 +26,11 @@ public class DocumentTypePtsComponents {
     public DocumentTypePtsComponents choiceDocumentTypePts(String documentType, String owner) {
         if (!Objects.equals(documentType, NO_PTS.getValue())) {
             ownersFieldHeader.shouldHave(text(PTS_OWNERS.getField()));
-            ownersPtsNumberField.shouldHave(texts(
+            step("Проверяем отображение схемы автомобиля", () -> ownersPtsNumberField.shouldHave(texts(
                     FIRST_OWNER.getValue(),
                     SECOND_OWNER.getValue(),
                     THIRD_OWNER.getValue(),
-                    FOURTH_OR_MORE_OWNER.getValue()));
+                    FOURTH_OR_MORE_OWNER.getValue())));
             seventhStep.$(byText(owner)).click();
             return this;
         } else {

@@ -1,21 +1,18 @@
+package tests;
+
 import data.enums.TransportType;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import pages.AutoRuPage;
 import pages.components.MarketingPopupComponents;
 import java.util.List;
 
-@Tag("smoke")
 @Story("Виды транспорта на главной странице")
 @DisplayName("Проверка отображения видов транспорта на главной странице")
 @Owner("Aleksey_Astashkin")
-public class CheckTypeTransportTest extends TestBase {
-
-    AutoRuPage autoRuPage = new AutoRuPage();
-    MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
+public class SearchTypeTransportTest extends TestBase {
 
     @DisplayName("Отображение видов транспорта")
     @EnumSource(value = TransportType.class)

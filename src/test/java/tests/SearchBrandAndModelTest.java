@@ -1,18 +1,15 @@
+package tests;
+
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import pages.AutoRuPage;
-import pages.components.MarketingPopupComponents;
 
 @Tag("smoke")
 @Story("Поиск автомобиля")
 @DisplayName("Поиск автомобиля по бренду и модели")
 public class SearchBrandAndModelTest extends TestBase {
-
-    AutoRuPage autoRuPage = new AutoRuPage();
-    MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
 
     @ValueSource(strings = {
             "Toyota Highlander", "Toyota Avensis", "Kia Magentis", "Mitsubishi Lancer",

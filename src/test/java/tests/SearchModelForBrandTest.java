@@ -1,23 +1,18 @@
+package tests;
+
 import data.enums.BrandAndMarks;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import pages.AutoRuPage;
-import pages.components.MarketingPopupComponents;
+
 import java.util.List;
 
-
-@Tag("smoke")
 @Story("Отображение моделей при поиске по бренду")
 @DisplayName("Тест поиска моделей по бренду")
-public class CheckModelForBrandTest extends TestBase {
-
-    AutoRuPage autoRuPage = new AutoRuPage();
-    MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
+public class SearchModelForBrandTest extends TestBase {
 
     @EnumSource(value = BrandAndMarks.class)
     @DisplayName("Проверка отображения моделей для бренда")

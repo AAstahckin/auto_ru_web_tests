@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -25,7 +24,7 @@ import static data.enums.PtsTypeParams.*;
 import static io.qameta.allure.Allure.step;
 import static java.time.Duration.ofSeconds;
 
-public class PostCarPage {
+public class AddCarPage {
 
     DocumentTypePtsComponents documentTypePtsComponents = new DocumentTypePtsComponents();
     DamageTypePtsComponents damageTypePtsComponents = new DamageTypePtsComponents();
@@ -94,13 +93,13 @@ public class PostCarPage {
     String dataId = "[data-id=%s]";
 
     @Step("Нажимаем закрыть")
-    public PostCarPage openSaleCars() {
+    public AddCarPage openSaleCars() {
         open("cars/used/add/");
         return this;
     }
 
     @Step("Заполняем технический блок")
-    public PostCarPage setCharacteristics(
+    public AddCarPage setCharacteristics(
             String brand,
             String model,
             String yearModel,
@@ -112,9 +111,9 @@ public class PostCarPage {
         step("Вводим в поисковую строку " + brand, () ->
                 inputMarks.setValue(brand));
         step("Выбираем из списка " + brand, () ->
-                markFieldIconSection.shouldHave(visible,ofSeconds(5)).$(byText(brand)).hover().click());
+                markFieldIconSection.shouldHave(visible, ofSeconds(5)).$(byText(brand)).hover().click());
         step("Выбираем из списка " + model, () ->
-                modelListSection.shouldHave(visible,ofSeconds(5)).$(byText(model)).hover().click());
+                modelListSection.shouldHave(visible, ofSeconds(5)).$(byText(model)).hover().click());
         step("Выбираем из списка год " + yearModel, () ->
                 yearModelSection.$(byText(yearModel)).click());
         step("Выбираем двигатель " + engineType, () ->
@@ -134,7 +133,7 @@ public class PostCarPage {
     }
 
     @Step("Заполняем пробег")
-    public PostCarPage setMileage(String value) {
+    public AddCarPage setMileage(String value) {
         buttonTransparentBlue.shouldHave(editable);
         step("Вводим в поле пробег " + value, () ->
                 mileageInput.setValue(value));
@@ -145,7 +144,7 @@ public class PostCarPage {
     }
 
     @Step("Добавляем фото")
-    public PostCarPage inputPhoto(String pathFile) {
+    public AddCarPage inputPhoto(String pathFile) {
         File file = new File(pathFile);
         step("Загружаем файл " + file.getName(), () ->
                 fileInput.uploadFile(file));
@@ -159,7 +158,7 @@ public class PostCarPage {
     }
 
     @Step("Проверяем отображение блока ПТС")
-    public PostCarPage checkPts() {
+    public AddCarPage checkPts() {
         seventhStep.should(visible, ofSeconds(3));
         buttonTransparentBlue.should(visible, ofSeconds(5));
         step("Проверяем отображение названия блока", () ->
@@ -174,7 +173,7 @@ public class PostCarPage {
     }
 
     @Step("Заполняем тип ПТС и количество владельцев")
-    public PostCarPage setPtsDocumentType(String documentType, String owner) {
+    public AddCarPage setPtsDocumentType(String documentType, String owner) {
         step("Выбираем " + documentType, () ->
                 seventhStep.$(byText(documentType)).click());
         step("Выбираем " + owner, () ->
@@ -184,7 +183,7 @@ public class PostCarPage {
     }
 
     @Step("Заполняем в блоке ПТС год и месяц приобретения автомобиля")
-    public PostCarPage setPtsYearPurchaseCar(String yearSale, String mouth) {
+    public AddCarPage setPtsYearPurchaseCar(String yearSale, String mouth) {
         step("Нажимаем на " + PTS_YEAR.getField(), () ->
                 seventhStep.$(byText(PTS_YEAR.getField())).click());
         step("Заполняем год  " + yearSale, () ->
@@ -197,14 +196,14 @@ public class PostCarPage {
     }
 
     @Step("Проставляем чекбокс 'Не растаможен'")
-    public PostCarPage setPtsNotCleared() {
+    public AddCarPage setPtsNotCleared() {
         step("Нажимаем на " + PTS_NOT_CLEARED.getField(), () ->
                 seventhStep.$(byText(PTS_NOT_CLEARED.getField())).click());
         return this;
     }
 
     @Step("Заполняем ПТС блок 'Гарантия'")
-    public PostCarPage setPtsGuarantee(String year, String mouth) {
+    public AddCarPage setPtsGuarantee(String year, String mouth) {
         step("Нажимаем на " + PTS_GUARANTEE.getField(), () ->
                 seventhStep.$(byText(PTS_GUARANTEE.getField())).click());
         step("Нажимаем на " + PTS_GUARANTEE_YEAR_OF_ENDING.getField(), () ->
@@ -221,7 +220,7 @@ public class PostCarPage {
     }
 
     @Step("Заполняем 'Описание'")
-    public PostCarPage setDescription(String valeText, String valueDescriptionParams) {
+    public AddCarPage setDescription(String valeText, String valueDescriptionParams) {
         Allure.step("Проверяем отображение полей");
         descriptionHeader.shouldHave(text(DESCRIPTION_HEADER.getField()));
         descriptionFieldWarning.shouldHave(text(DESCRIPTION_WARNING.getField()));
@@ -239,7 +238,7 @@ public class PostCarPage {
     }
 
     @Step("Заполняем 'Опции'")
-    public PostCarPage setOptions(String option) {
+    public AddCarPage setOptions(String option) {
         Allure.step("Проверяем отображение полей");
         sectionOptionsEquipment.shouldHave(text(OPTIONS_HEADER.getOptionsField()));
         equipmentField.shouldHave(text(OPTIONS_FOG_LIGHTS.getOptionsValue()));
@@ -258,7 +257,7 @@ public class PostCarPage {
     }
 
     @Step("Заполняем 'Повреждения'")
-    public PostCarPage setDamage(String damageType, String damageValue) {
+    public AddCarPage setDamage(String damageType, String damageValue) {
         tenthStep.should(text("Повреждения"), ofSeconds(5));
         damageTypePtsComponents.clickDamageType(damageType, damageValue);
         step("Нажимаем на кнопку продолжить", () ->
@@ -267,7 +266,7 @@ public class PostCarPage {
     }
 
     @Step("Заполняем 'Контакты'")
-    public PostCarPage setContacts(String userName, String email, String phone) {
+    public AddCarPage setContacts(String userName, String email, String phone) {
         eleventhStep.shouldHave(text("Контакты"));
         $(buttonWithLoader).shouldHave(visible);
         step("Заполняем " + userName, () ->
@@ -280,7 +279,7 @@ public class PostCarPage {
     }
 
     @Step("Нажимаем сбросить и переходим на главную страницу")
-    public PostCarPage clickResetButton() {
+    public AddCarPage clickResetButton() {
         resetButton.shouldHave(visible).hover().click();
         confirm();
         markFieldIconSection.shouldHave(visible, ofSeconds(5));
@@ -290,13 +289,13 @@ public class PostCarPage {
     }
 
     @Step("Нажимаем закрыть")
-    public PostCarPage closeRedButton() {
+    public AddCarPage closeRedButton() {
         closeRedButton.shouldHave(visible).hover().click();
         return this;
     }
 
     @Step("Выполняем поиск по VIN")
-    public PostCarPage searchVin(String vin, String brand) {
+    public AddCarPage searchVin(String vin, String brand) {
         step("Заполняем в поле поиска " + brand, () ->
                 inputMarks.should(visible, ofSeconds(8)).setValue(brand));
         step("Выбираем " + brand, () ->
@@ -309,7 +308,7 @@ public class PostCarPage {
     }
 
     @Step("Проверяем автоматическое заполнение полей по VIN")
-    public PostCarPage checkTexParam(
+    public AddCarPage checkTexParam(
             String brand,
             String model,
             String yearAuto,

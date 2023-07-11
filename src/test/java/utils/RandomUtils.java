@@ -1,18 +1,10 @@
 package utils;
 
 import com.github.javafaker.Faker;
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvValidationException;
 import data.enums.DamageType;
 import data.enums.DamageValues;
 import data.enums.DescriptionParams;
 import data.enums.OptionsParams;
-
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class RandomUtils {
 
@@ -51,13 +43,8 @@ public class RandomUtils {
         return faker.name().firstName();
     }
 
-    public static String getRandomText(int length) {
-        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        StringBuilder stringBuilder = new StringBuilder();
-        for(int i=0; i<length; i++){
-            stringBuilder.append(str.charAt(faker.random().nextInt(str.length())));
-        }
-        return stringBuilder.toString();
+    public static String getRandomText() {
+        return faker.harryPotter().quote();
     }
 
 }
