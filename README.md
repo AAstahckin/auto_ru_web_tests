@@ -1,5 +1,4 @@
 # Проект по автоматизации тестирования UI для сайта компании [Авто ру](https://auto.ru/)
-![WB_logo.jpg](media/logo/Auto_ru_logo.png)
 
 ## :pushpin: Содержание:
 
@@ -41,11 +40,11 @@
 - ```sanity``` -Запуск тестов sanity
 ### Запуск тестов из удаленного браузера
 ```
-gradle clean test -Dbrowser=chrome -DbrowserSize=1920x1080 -DbrowserVersion=100.0 -DbaseUrl=https://auto.ru/ -DremoteUrl=https://user1:1234@selenoid.autotests.cloud/wd/hub"
+gradle clean test -Dbrowser=chrome -DbrowserSize=1920x1080 -DbrowserVersion=100.0 -DbaseUrl=https://auto.ru/ -DremoteUrl=https://user1:1234@selenoid.autotests.cloud/wd/hub
 ```
 ### Запуск тестов из терминала
 ```
-gradle clean test"
+gradle clean test
 ```
 
 
