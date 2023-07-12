@@ -38,10 +38,7 @@
 ### Варианты запуска тестов
 - ```test``` -Запуск всех тестов
 - ```sanity``` -Запуск тестов sanity
-### Запуск тестов из удаленного браузера
-```
-gradle clean test -Dbrowser=chrome -DbrowserSize=1920x1080 -DbrowserVersion=100.0 -DbaseUrl=https://auto.ru/ -DremoteUrl=https://user1:1234@selenoid.autotests.cloud/wd/hub
-```
+
 ### Запуск тестов из терминала
 ```
 gradle clean test
