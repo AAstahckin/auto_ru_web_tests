@@ -30,7 +30,7 @@ public class ReportsTests extends TestBase {
     @CsvFileSource(resources = "/testdata/testDataVinCodeAndTexParam.csv")
     @DisplayName("Проверка отчета по vin")
     @Description("Проверка отчета")
-    @ParameterizedTest(name = "по vin [{0}], бренд [{1}], модель [{2}]")
+    @ParameterizedTest(name = "[{0}], бренд [{1}], модель [{2}]")
     @Severity(SeverityLevel.BLOCKER)
     @Tag("sanity")
     public void checkLoginTest1(String vin, String brand, String model, String year) {
