@@ -24,13 +24,13 @@ public class DocumentTypePtsComponents {
     ElementsCollection ownersPtsNumberField = $$(".OfferFormOwnersNumberField .Tags_wrap_wrap span .Button__text");
 
     public DocumentTypePtsComponents choiceDocumentTypePts(String documentType, String owner) {
-        if (!Objects.equals(documentType, NO_PTS.getValue())) {
-            ownersFieldHeader.shouldHave(text(PTS_OWNERS.getField()));
+        if (!Objects.equals(documentType, NO_PTS.getTypeValue())) {
+            ownersFieldHeader.shouldHave(text(PTS_OWNERS.getValue()));
             step("Проверяем отображение схемы автомобиля", () -> ownersPtsNumberField.shouldHave(texts(
-                    FIRST_OWNER.getValue(),
-                    SECOND_OWNER.getValue(),
-                    THIRD_OWNER.getValue(),
-                    FOURTH_OR_MORE_OWNER.getValue())));
+                    FIRST_OWNER.getTypeValue(),
+                    SECOND_OWNER.getTypeValue(),
+                    THIRD_OWNER.getTypeValue(),
+                    FOURTH_OR_MORE_OWNER.getTypeValue())));
             seventhStep.$(byText(owner)).click();
             return this;
         } else {

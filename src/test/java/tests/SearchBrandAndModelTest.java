@@ -20,7 +20,9 @@ public class SearchBrandAndModelTest extends TestBase {
     void searchMarksAndBrand(String searchQuery) {
         autoRuPage.openAutoRu();
         marketingPopupComponents.shutdownMarketingPopup();
-        autoRuPage.searchAuto(searchQuery);
+        autoRuPage
+                .searchAuto(searchQuery)
+                .checkResultSearch(searchQuery);
     }
 
 }

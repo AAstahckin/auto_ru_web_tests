@@ -1,5 +1,10 @@
 package data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum DescriptionFields {
 
     DESCRIPTION_HEADER("Описание"),
@@ -8,13 +13,5 @@ public enum DescriptionFields {
     DESCRIPTION_BEATEN("Битый или не на ходу");
 
     final String typeValue;
-
-    DescriptionFields(String typeValue) {
-        this.typeValue = typeValue;
-    }
-
-    public String getField() {
-        return typeValue;
-    }
 
 }

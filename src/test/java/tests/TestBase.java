@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.*;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.RemoteConfig;
 import config.WebDriverConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -17,8 +18,6 @@ import pages.components.SaleCarPopupComponent;
 
 import java.util.Map;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-
 public class TestBase {
 
     AddCarPage addCarPage = new AddCarPage();
@@ -26,20 +25,22 @@ public class TestBase {
     MarketingPopupComponents marketingPopupComponents = new MarketingPopupComponents();
     SaleCarPopupComponent saleCarPopupComponent = new SaleCarPopupComponent();
 
-    private static final WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+    private static final WebDriverConfig webDriverConfig = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+    public static RemoteConfig remoteConfig = ConfigFactory.create(RemoteConfig.class, System.getProperties());
+
 
     @BeforeAll
     static void beforeAll() {
 
         Configuration.pageLoadStrategy = "eager";
-        Configuration.baseUrl = config.getBaseUrl();
-        Configuration.browser = config.getBrowser();
-        Configuration.browserVersion = config.getBrowserVersion();
-        Configuration.browserSize = config.getBrowserSize();
+        Configuration.baseUrl = webDriverConfig.baseUrl();
+        Configuration.browser = webDriverConfig.browser();
+        Configuration.browserVersion = webDriverConfig.browserVersion();
+        Configuration.browserSize = webDriverConfig.browserSize();
         Configuration.timeout = 10000;
 
-        if (config.getRemoteURL() != null) {
-            Configuration.remote = config.getRemoteURL();
+        if (remoteConfig.url() != null && remoteConfig.password() != null && remoteConfig.login() != null) {
+            Configuration.remote = String.format("https://%s:%s@%s/wd/hub", remoteConfig.login(), remoteConfig.password(), remoteConfig.url());
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                     "enableVNC", true,
@@ -60,8 +61,10 @@ public class TestBase {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        Attach.addVideo();
-        closeWebDriver();
+        if (remoteConfig.url() != null && remoteConfig.password() != null && remoteConfig.login() != null) {
+            Attach.addVideo();
+        }
+        Selenide.closeWebDriver();
     }
 
 }

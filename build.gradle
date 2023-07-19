@@ -1,13 +1,14 @@
 plugins {
     id 'java-library'
     id 'io.qameta.allure' version '2.11.2'
+    id 'io.freefair.lombok' version '6.0.0-m2'
 }
 
 repositories {
     mavenCentral()
 }
 
-def selenideVersion = "6.13.0",
+def selenideVersion = "6.15.0",
     allureVersion = "2.21.0",
     jUnitVersion = "5.9.3",
     javaFakerVersion = "1.0.2",
@@ -55,7 +56,6 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF=8'
 }
 compileTestJava.options.encoding = 'UTF-8'
-compileJava.options.encoding = 'UTF-8'
 
 test {
     useJUnitPlatform()

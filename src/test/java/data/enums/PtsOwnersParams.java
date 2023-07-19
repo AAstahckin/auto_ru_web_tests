@@ -1,5 +1,10 @@
 package data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum PtsOwnersParams {
 
     FIRST_OWNER("Первый"),
@@ -9,11 +14,4 @@ public enum PtsOwnersParams {
 
     final String typeValue;
 
-    PtsOwnersParams(String typeValue) {
-        this.typeValue = typeValue;
-    }
-
-    public String getValue() {
-        return typeValue;
-    }
 }

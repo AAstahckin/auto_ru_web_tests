@@ -1,5 +1,10 @@
 package data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum BrandAndMarks {
 
     BMW("BMW", new String[]{
@@ -18,18 +23,5 @@ public enum BrandAndMarks {
 
     final String typeName;
     final String[] typeValue;
-
-    BrandAndMarks(String typeName, String[] typeValue) {
-        this.typeName = typeName;
-        this.typeValue = typeValue;
-    }
-
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public String[] getTypeValue() {
-        return typeValue;
-    }
 
 }

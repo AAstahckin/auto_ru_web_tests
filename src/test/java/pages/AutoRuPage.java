@@ -87,6 +87,12 @@ public class AutoRuPage {
                 searchOutputTitle.shouldHave(visible, ofSeconds(15)));
         step("В выпадающем окне нажимаем на бренд с моделью", () ->
         searchOutputTitle.shouldHave(text(value)).click());
+                listingCars.findBy(text(value)).should(text(value));
+        return this;
+    }
+
+    @Step("Проверяем результат поиска по бренду и модели")
+    public AutoRuPage checkResultSearch(String value) {
         step("Проверяем что названии поиска присутствует: Купить - ", () ->
                 titleHead.shouldHave(text("Купить " + value)));
         step("Проверяем что в фильтре выбран бренд и модель", () ->

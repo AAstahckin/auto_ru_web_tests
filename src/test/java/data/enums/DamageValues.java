@@ -1,5 +1,10 @@
 package data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum DamageValues {
 
     PAINTED("Окрашено"),
@@ -8,13 +13,6 @@ public enum DamageValues {
     SCRATCH("Царапина/Скол");
 
     final String typeValue;
-
-        DamageValues(String typeValue) {
-        this.typeValue = typeValue;
-    }
-    public String getDamageValues() {
-        return typeValue;
-    }
 
 }
 

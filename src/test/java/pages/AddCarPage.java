@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
@@ -77,22 +76,20 @@ public class AddCarPage {
             eleventhStep = $("#wizard-step-11"),
             buttonSkip = $(".OfferWizardControls__content .OfferWizardControls__buttonText").$(byText("Пропустить")),
             buttonWithLoader = $(".OfferFormPhonesField__submitButton .ButtonWithLoader__content"),
-            resetButton = $(".OfferAccordionContents__resetButton"),
             UserNameField = $(".OfferFormUserNameField__infoPopup .TextInput__inputWrap  .TextInput__control"),
             emailField = $(".OfferFormUserEmailField__infoPopup .TextInput__inputWrap  .TextInput__control"),
             phonesField = $(".OfferFormPhonesField__phoneAuth .TextInput__inputWrap  .TextInput__control"),
             withSubtitle = $(".OfferTechHeader__title_withSubtitle"),
             subtitle = $(".OfferTechHeader__subtitle"),
             inputVin = $(".OfferAccordionVin .TextInput__control"),
-            buttonAccordionVin = $(".OfferAccordionVin .Button__content"),
-            closeRedButton = $(".Link_color_red");
+            buttonAccordionVin = $(".OfferAccordionVin .Button__content");
 
     ElementsCollection
             ptsTypeSelection = $$(".OfferFormPtsStatusField button");
 
     String dataId = "[data-id=%s]";
 
-    @Step("Нажимаем закрыть")
+    @Step("Открываем страницу создания объявления")
     public AddCarPage openSaleCars() {
         open("cars/used/add/");
         return this;
@@ -152,6 +149,11 @@ public class AddCarPage {
         checkedMenuSectionPhotos.shouldHave(visible);
         step("Нажимаем на кнопку продолжить", () ->
                 buttonBlue.should(visible, ofSeconds(5)).hover().click());
+        return this;
+    }
+
+    @Step("Проверяем информационное сообщение в блоке файлы")
+    public AddCarPage checkWarningTextPhoto() {
         step("Проверяем отображение текста о не распозновании номера", () ->
                 invalidGrzContent.shouldHave(text("Мы не распознали госномер на фото. Проверьте, что он виден хотя бы на одном снимке, иначе объявление может быть заблокировано.")));
         return this;
@@ -162,13 +164,13 @@ public class AddCarPage {
         seventhStep.should(visible, ofSeconds(3));
         buttonTransparentBlue.should(visible, ofSeconds(5));
         step("Проверяем отображение названия блока", () ->
-                seventhStep.should(text(PTS_HEADER.getField()), ofSeconds(3)));
+                seventhStep.should(text(PTS_HEADER.getValue()), ofSeconds(3)));
         step("Проверяем отображение текста 'Тип документа'", () ->
-                ptsStatusHeader.should(text(PTS_TYPE_DOCUMENT.getField())));
+                ptsStatusHeader.should(text(PTS_TYPE_DOCUMENT.getValue())));
         step("Проверяем отображение полей год и месяц", () ->
-                ptsDateHeader.should(text(PTS_SALE_DATE.getField())));
+                ptsDateHeader.should(text(PTS_SALE_DATE.getValue())));
         step("Проверяем отображение кнопок с видом ПТС", () ->
-                ptsTypeSelection.shouldHave(texts(ORIGINAL_PTS.getValue(), DUPLICATE_PTS.getValue(), NO_PTS.getValue())));
+                ptsTypeSelection.shouldHave(texts(ORIGINAL_PTS.getTypeValue(), DUPLICATE_PTS.getTypeValue(), NO_PTS.getTypeValue())));
         return this;
     }
 
@@ -184,12 +186,12 @@ public class AddCarPage {
 
     @Step("Заполняем в блоке ПТС год и месяц приобретения автомобиля")
     public AddCarPage setPtsYearPurchaseCar(String yearSale, String mouth) {
-        step("Нажимаем на " + PTS_YEAR.getField(), () ->
-                seventhStep.$(byText(PTS_YEAR.getField())).click());
+        step("Нажимаем на " + PTS_YEAR.getValue(), () ->
+                seventhStep.$(byText(PTS_YEAR.getValue())).click());
         step("Заполняем год  " + yearSale, () ->
                 yearRadioSelection.$(byText(yearSale)).click());
-        step("Нажимаем на " + PTS_MONTH.getField(), () ->
-                seventhStep.$(byText(PTS_MONTH.getField())).click());
+        step("Нажимаем на " + PTS_MONTH.getValue(), () ->
+                seventhStep.$(byText(PTS_MONTH.getValue())).click());
         step("Заполняем месяц  " + mouth, () ->
                 yearRadioSelection.$(byText(mouth)).click());
         return this;
@@ -197,21 +199,21 @@ public class AddCarPage {
 
     @Step("Проставляем чекбокс 'Не растаможен'")
     public AddCarPage setPtsNotCleared() {
-        step("Нажимаем на " + PTS_NOT_CLEARED.getField(), () ->
-                seventhStep.$(byText(PTS_NOT_CLEARED.getField())).click());
+        step("Нажимаем на " + PTS_NOT_CLEARED.getValue(), () ->
+                seventhStep.$(byText(PTS_NOT_CLEARED.getValue())).click());
         return this;
     }
 
     @Step("Заполняем ПТС блок 'Гарантия'")
     public AddCarPage setPtsGuarantee(String year, String mouth) {
-        step("Нажимаем на " + PTS_GUARANTEE.getField(), () ->
-                seventhStep.$(byText(PTS_GUARANTEE.getField())).click());
-        step("Нажимаем на " + PTS_GUARANTEE_YEAR_OF_ENDING.getField(), () ->
-                seventhStep.$(byText(PTS_GUARANTEE_YEAR_OF_ENDING.getField())).click());
+        step("Нажимаем на " + PTS_GUARANTEE.getValue(), () ->
+                seventhStep.$(byText(PTS_GUARANTEE.getValue())).click());
+        step("Нажимаем на " + PTS_GUARANTEE_YEAR_OF_ENDING.getValue(), () ->
+                seventhStep.$(byText(PTS_GUARANTEE_YEAR_OF_ENDING.getValue())).click());
         step("Заполняем год  " + year, () ->
                 yearRadioSelection.$(byText(year)).click());
-        step("Нажимаем на " + PTS_GUARANTEE_END_MONTH.getField(), () ->
-                seventhStep.$(byText(PTS_GUARANTEE_END_MONTH.getField())).click());
+        step("Нажимаем на " + PTS_GUARANTEE_END_MONTH.getValue(), () ->
+                seventhStep.$(byText(PTS_GUARANTEE_END_MONTH.getValue())).click());
         step("Заполняем год  " + mouth, () ->
                 yearRadioSelection.$(byText(mouth)).click());
         step("Нажимаем на кнопку продолжить", () ->
@@ -222,10 +224,10 @@ public class AddCarPage {
     @Step("Заполняем 'Описание'")
     public AddCarPage setDescription(String valeText, String valueDescriptionParams) {
         Allure.step("Проверяем отображение полей");
-        descriptionHeader.shouldHave(text(DESCRIPTION_HEADER.getField()));
-        descriptionFieldWarning.shouldHave(text(DESCRIPTION_WARNING.getField()));
-        autoRuExclusiveField.shouldHave(text(DESCRIPTION_ONLY_ON_AUTO.getField()));
-        conditionBeatenField.shouldHave(text(DESCRIPTION_BEATEN.getField()));
+        descriptionHeader.shouldHave(text(DESCRIPTION_HEADER.getTypeValue()));
+        descriptionFieldWarning.shouldHave(text(DESCRIPTION_WARNING.getTypeValue()));
+        autoRuExclusiveField.shouldHave(text(DESCRIPTION_ONLY_ON_AUTO.getTypeValue()));
+        conditionBeatenField.shouldHave(text(DESCRIPTION_BEATEN.getTypeValue()));
         buttonGray.should(editable, ofSeconds(5));
         inputDescription.click();
         step("Вводим текст в поле " + valeText, () ->
@@ -240,11 +242,11 @@ public class AddCarPage {
     @Step("Заполняем 'Опции'")
     public AddCarPage setOptions(String option) {
         Allure.step("Проверяем отображение полей");
-        sectionOptionsEquipment.shouldHave(text(OPTIONS_HEADER.getOptionsField()));
-        equipmentField.shouldHave(text(OPTIONS_FOG_LIGHTS.getOptionsValue()));
-        equipmentField.shouldHave(text(OPTIONS_BOARD_COMPUTER.getOptionsValue()));
-        equipmentField.shouldHave(text(OPTIONS_CENTRAL_LOCKING.getOptionsValue()));
-        equipmentField.shouldHave(text(OPTIONS_IMMOBILIZER.getOptionsValue()));
+        sectionOptionsEquipment.shouldHave(text(OPTIONS_HEADER.getTypeValue()));
+        equipmentField.shouldHave(text(OPTIONS_FOG_LIGHTS.getTypeValue()));
+        equipmentField.shouldHave(text(OPTIONS_BOARD_COMPUTER.getTypeValue()));
+        equipmentField.shouldHave(text(OPTIONS_CENTRAL_LOCKING.getTypeValue()));
+        equipmentField.shouldHave(text(OPTIONS_IMMOBILIZER.getTypeValue()));
         allEquipment.should(visible, ofSeconds(5));
         blockButtons.should(visible, ofSeconds(5));
         step("Выбираем оцию " + option, () ->

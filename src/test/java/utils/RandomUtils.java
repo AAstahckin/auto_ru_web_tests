@@ -16,19 +16,19 @@ public class RandomUtils {
     }
 
     public static String getRandomOptionsParams() {
-        return getRandomEnum(OptionsParams.class).getOptionsValue();
+        return getRandomEnum(OptionsParams.class).getTypeValue();
     }
 
     public static String getRandomDescriptionParams() {
-        return getRandomEnum(DescriptionParams.class).getDescriptionValue();
+        return getRandomEnum(DescriptionParams.class).getTypeValue();
     }
 
     public static String getRandomDamageTypeParams() {
-        return getRandomEnum(DamageType.class).getOptionsTypeValue();
+        return getRandomEnum(DamageType.class).getTypeValue();
     }
 
     public static String getRandomDamageValues() {
-        return getRandomEnum(DamageValues.class).getDamageValues();
+        return getRandomEnum(DamageValues.class).getTypeValue();
     }
 
     public static String getRandomEmail() {

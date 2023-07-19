@@ -27,18 +27,14 @@ public class ReportsPage {
 
     @Step("Проверяем страницу Отчеты")
     public ReportsPage checkWindowReports() {
-        step("", () ->
+        step("Проверяем титульник страницы", () ->
                 vinTitle.shouldHave(text("Проверьте историю автомобиля по госномеру или VIN")));
-        step("", () ->
+        step("Проверяем информационное сообщение", () ->
                 vinText.shouldHave(text("Соберём данные из десятков источников: ДТП, юридические ограничения, пробеги, обслуживание, предыдущие размещения на Авто.ру и многое другое")));
-        step("", () ->
-                vinInput.shouldHave(visible, ofSeconds(5)));
-        step("", () ->
-                historyByVin.shouldHave(visible));
-        step("", () ->
-                vinMini.shouldHave(visible));
-        step("", () ->
-                continueButton.shouldHave(visible));
+                vinInput.shouldHave(visible, ofSeconds(5));
+                historyByVin.shouldHave(visible);
+                vinMini.shouldHave(visible);
+                continueButton.shouldHave(visible);
         return this;
     }
 
@@ -46,9 +42,9 @@ public class ReportsPage {
     public ReportsPage vinSetValue(String vinValue) {
         itemImagePromoBlock.get(9).shouldHave(visible, ofSeconds(15));
         vinInput.hover().click();
-        step("", () ->
+        step("Вводим вин в поле", () ->
                 vinInput.should(visible, ofSeconds(5)).setValue(vinValue));
-        step("", () ->
+        step("Нажимем продолэить", () ->
                 continueButton.click());
         return this;
     }

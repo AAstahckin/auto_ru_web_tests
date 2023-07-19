@@ -1,5 +1,10 @@
 package data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum PtsTypeParams {
 
     ORIGINAL_PTS("Оригинал / Электронный ПТС"),
@@ -8,11 +13,4 @@ public enum PtsTypeParams {
 
     final String typeValue;
 
-    PtsTypeParams(String typeValue) {
-        this.typeValue = typeValue;
-    }
-
-    public String getValue() {
-        return typeValue;
-    }
 }

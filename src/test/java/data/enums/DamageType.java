@@ -1,5 +1,10 @@
 package data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum DamageType {
 
     FRONT_BUMPER("Передний бампер", 1),
@@ -12,17 +17,8 @@ public enum DamageType {
     HOOD("Капот", 7),
     WINDSHIELD("Лобовое стекло", 8);
 
-    public final String typeValue;
-    public final int typeNumber;
-
-    DamageType(String typeValue, int typeNumber) {
-        this.typeValue = typeValue;
-        this.typeNumber = typeNumber;
-    }
-
-    public String getOptionsTypeValue() {
-        return typeValue;
-    }
+    final String typeValue;
+    final int typeNumber;
 
     public static int getNumber(String name) {
         for (DamageType damageType : DamageType.values()) {

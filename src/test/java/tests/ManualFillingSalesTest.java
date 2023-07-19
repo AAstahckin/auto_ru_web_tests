@@ -50,6 +50,7 @@ public class ManualFillingSalesTest extends TestBase {
                 .setCharacteristics(brand, model, yearModel, engineType, gearType, transmission, horses, color)
                 .setMileage(mileage)
                 .inputPhoto("src/test/resources/testdata/transport.jpg")
+                .checkWarningTextPhoto()
                 .checkPts()
                 .setPtsDocumentType(ptsType, owners)
                 .setPtsYearPurchaseCar(yearSale,mouthSale)

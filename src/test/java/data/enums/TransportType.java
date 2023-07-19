@@ -1,5 +1,10 @@
 package data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum TransportType {
 
     COMMERCIAL("Коммерческие", new String[]{
@@ -13,18 +18,5 @@ public enum TransportType {
 
     final String typeName;
     final String[] typeValue;
-
-    TransportType(String typeName, String[] typeValue) {
-        this.typeName = typeName;
-        this.typeValue = typeValue;
-    }
-
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public String[] getTypeValue() {
-        return typeValue;
-    }
 
 }

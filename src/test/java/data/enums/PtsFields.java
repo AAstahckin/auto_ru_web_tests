@@ -1,5 +1,10 @@
 package data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum PtsFields {
 
     PTS_HEADER("ПТС"),
@@ -13,14 +18,6 @@ public enum PtsFields {
     PTS_GUARANTEE_END_MONTH("Месяц"),
     PTS_SALE_DATE("Когда был куплен автомобиль?");
 
-    final String typeValue;
-
-    PtsFields(String typeValue) {
-        this.typeValue = typeValue;
-    }
-
-    public String getField() {
-        return typeValue;
-    }
+    final String value;
 
 }

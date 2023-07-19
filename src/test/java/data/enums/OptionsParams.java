@@ -1,5 +1,10 @@
 package data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum OptionsParams {
 
     OPTIONS_FOG_LIGHTS("Противотуманные фары"),
@@ -9,11 +14,4 @@ public enum OptionsParams {
 
     final String typeValue;
 
-    OptionsParams(String typeValue) {
-        this.typeValue = typeValue;
-    }
-
-    public String getOptionsValue() {
-        return typeValue;
-    }
 }

@@ -1,5 +1,10 @@
 package data.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum DescriptionParams {
 
     OPTIONS_VALUE_WINTER_TIRES("Комплект зимних шин в подарок"),
@@ -15,11 +20,4 @@ public enum DescriptionParams {
 
     final String typeValue;
 
-    DescriptionParams(String typeValue) {
-        this.typeValue = typeValue;
-    }
-
-    public String getDescriptionValue() {
-        return typeValue;
-    }
 }
