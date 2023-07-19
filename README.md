@@ -88,7 +88,9 @@ gradle clean test
 * <code>BROWSER_VERSION</code> – версия браузера<code>chrome:100.0</code>.
 * <code>BROWSER_SIZE</code> – размер окна браузера. По-умолчанию - <code>1920x1080</code>.
 * <code>BASE_URL</code> – url, по которому будет открываться тестируемое приложение. По-умолчанию - <code>https://auto.ru/</code>.
-* <code>REMOTE_URL</code> – адрес удалённого браузера.
+* <code>REMOTE_URL</code> – адрес для удаленного запуска тестов.
+* <code>REMOTE_LOGIN</code> – логин для удаленного запуска тестов.
+* <code>REMOTE_PASSWORD</code> – пароль для удаленного запуска тестов.
 
 <p align="center">
 <img title="Jenkins Build" src="media/screens/jenkins build.png">
