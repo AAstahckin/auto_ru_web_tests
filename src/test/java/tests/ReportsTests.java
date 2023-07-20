@@ -8,6 +8,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import pages.ReportsPage;
 
+import static data.enums.ReportsFields.REPORT_TITTLE;
+import static data.enums.ReportsFields.REPORT_VIN_TITTLE;
+
 @Story("Вкладка Отчеты")
 @DisplayName("Проверка отчета")
 @Owner("Aleksey_Astashkin")
@@ -23,7 +26,7 @@ public class ReportsTests extends TestBase {
         autoRuPage.openAutoRu();
         marketingPopupComponents.shutdownMarketingPopup();
         autoRuPage.clickHeaderReports();
-        reportsPage.checkWindowReports();
+        reportsPage.checkWindowReports(REPORT_TITTLE.getValue(), REPORT_VIN_TITTLE.getValue());
 
     }
 

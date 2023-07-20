@@ -26,11 +26,11 @@ public class ReportsPage {
             itemImagePromoBlock = $$(".HistoryByVinPromoBlock__itemImage");
 
     @Step("Проверяем страницу Отчеты")
-    public ReportsPage checkWindowReports() {
+    public ReportsPage checkWindowReports(String title, String titleVin) {
         step("Проверяем титульник страницы", () ->
-                vinTitle.shouldHave(text("Проверьте историю автомобиля по госномеру или VIN")));
+                vinTitle.shouldHave(text(title)));
         step("Проверяем информационное сообщение", () ->
-                vinText.shouldHave(text("Соберём данные из десятков источников: ДТП, юридические ограничения, пробеги, обслуживание, предыдущие размещения на Авто.ру и многое другое")));
+                vinText.shouldHave(text(titleVin)));
                 vinInput.shouldHave(visible, ofSeconds(5));
                 historyByVin.shouldHave(visible);
                 vinMini.shouldHave(visible);
