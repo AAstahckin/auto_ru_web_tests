@@ -16,6 +16,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static data.enums.DescriptionFields.*;
+import static data.enums.FilesFields.PHOTO_WARNING_TEXT;
 import static data.enums.OptionsFields.OPTIONS_HEADER;
 import static data.enums.OptionsParams.*;
 import static data.enums.PtsFields.*;
@@ -155,7 +156,7 @@ public class AddCarPage {
     @Step("Проверяем информационное сообщение в блоке файлы")
     public AddCarPage checkWarningTextPhoto() {
         step("Проверяем отображение текста о не распозновании номера", () ->
-                invalidGrzContent.shouldHave(text("Мы не распознали госномер на фото. Проверьте, что он виден хотя бы на одном снимке, иначе объявление может быть заблокировано.")));
+                invalidGrzContent.shouldHave(text(PHOTO_WARNING_TEXT.getValue())));
         return this;
     }
 
